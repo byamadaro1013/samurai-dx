@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="relative flex h-[31.25rem] w-full flex-col items-center justify-center bg-background-dark">
+    <footer className="relative flex h-[31.25rem] w-full flex-col items-center justify-center bg-[#000000]">
       {/* Logo */}
-      <div className="relative h-[11.063rem] w-[20rem] mb-8">
+      <div className="relative mb-8 h-[11.063rem] w-[20rem]">
         <Image
           src="/assets/images/logo/logo.svg"
           alt="SamurAI DX Logo"

@@ -11,7 +11,9 @@ const About = () => {
             ●About
           </p>
           <h2 className="font-gothic text-heading-xl text-text-white md:text-[30px]">
-            士業界のデジタル変革パートナー
+            士業界のデジタル変革
+            <br className="hidden md:block" />
+            パートナー
           </h2>
         </div>
 
