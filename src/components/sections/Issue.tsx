@@ -48,24 +48,24 @@ const CloudOffIcon = () => (
 
 const Issue = () => {
   return (
-    <section className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-[7.5rem]">
+    <section className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-20">
       {/* Content */}
-      <div className="relative z-10 flex w-[63.75rem] flex-col gap-10 md:w-full md:px-6">
+      <div className="relative z-10 flex w-[63.75rem] flex-col gap-10 md:w-80">
         {/* Title section */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 leading-[1.2]">
           <p className="whitespace-pre text-center font-helvetica text-heading-sm text-text-white">
             ●Issue
           </p>
-          <h2 className="whitespace-pre font-gothic text-heading-xl text-text-white">
+          <h2 className="whitespace-pre font-gothic text-heading-xl text-text-white md:text-[30px]">
             我々が解決する課題
           </h2>
-          <p className="whitespace-pre font-gothic text-[1.25rem] leading-[1.2] font-medium text-text-white">
+          <p className="whitespace-pre font-gothic text-[1.25rem] leading-[1.2] font-medium text-text-white md:text-[20px]">
             士業界全体のデジタル化の遅れ
           </p>
         </div>
 
         {/* Description */}
-        <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.6] font-medium text-text-gray">
+        <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.6] font-medium text-text-gray md:text-base">
           <p className="mb-0">
             弁護士、司法書士、行政書士、税理士等の士業は、
           </p>
@@ -78,14 +78,14 @@ const Issue = () => {
         {/* Issue Cards */}
         <div className="flex gap-10 md:flex-col">
           {/* Card 1 */}
-          <div className="flex w-[18.75rem] flex-col gap-4 md:w-full">
-            <div className="flex items-start gap-2">
+          <div className="flex w-[18.75rem] flex-col gap-4 md:w-[300px]">
+            <div className="flex items-start gap-2 leading-[0]">
               <DescriptionIcon />
-              <h3 className="font-gothic text-[1.25rem] leading-[1.2] font-medium text-text-gray">
+              <h3 className="font-gothic text-[1.25rem] leading-[1.2] font-medium text-text-gray md:text-[20px]">
                 文書作成業務の非効率性
               </h3>
             </div>
-            <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.5] font-medium text-[rgba(255,255,255,0.5)]">
+            <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:text-base md:w-[293px]">
               <p className="mb-0">
                 ・参照条文や定義語を探すための果てしないスクロールと検索
               </p>
@@ -100,14 +100,14 @@ const Issue = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="flex w-[18.75rem] flex-col gap-4 md:w-full">
-            <div className="flex items-start gap-2">
+          <div className="flex w-[18.75rem] flex-col gap-4 md:w-[300px]">
+            <div className="flex items-start gap-2 leading-[0]">
               <BorderColorIcon />
-              <h3 className="font-gothic text-[1.25rem] leading-[1.2] font-medium text-text-gray">
+              <h3 className="font-gothic text-[1.25rem] leading-[1.2] font-medium text-text-gray md:text-[20px]">
                 業務プロセスのアナログ依存
               </h3>
             </div>
-            <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.5] font-medium text-[rgba(255,255,255,0.5)]">
+            <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.5] font-medium text-[rgba(255,255,255,0.5)] md:text-base md:leading-[24px] md:w-[292px]">
               <p className="mb-0">・手作業による繰り返し作業</p>
               <p className="mb-0">（書類作成、データ入力等）</p>
               <p className="mb-0">
@@ -119,14 +119,14 @@ const Issue = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="flex w-[18.75rem] flex-col gap-4 md:w-full">
-            <div className="flex items-start gap-2">
+          <div className="flex w-[18.75rem] flex-col gap-4 md:w-[300px]">
+            <div className="flex items-start gap-2 leading-[0]">
               <CloudOffIcon />
-              <h3 className="font-gothic text-[1.25rem] leading-[1.2] font-medium text-text-gray">
+              <h3 className="font-gothic text-[1.25rem] leading-[1.2] font-medium text-text-gray md:text-[20px]">
                 既存ツールの限界
               </h3>
             </div>
-            <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.5] font-medium text-[rgba(255,255,255,0.5)]">
+            <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.5] font-medium text-[rgba(255,255,255,0.5)] md:text-base md:leading-[24px]">
               <p className="mb-0">
                 ・汎用的なシステムでは士業特有の業務フローに適合しない
               </p>

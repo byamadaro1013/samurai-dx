@@ -3,35 +3,35 @@ import Image from "next/image";
 
 const Service = () => {
   return (
-    <section className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-[7.5rem]">
+    <section className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-20">
       {/* Content */}
-      <div className="relative z-10 flex w-[63.75rem] flex-col gap-10 md:w-full md:px-6">
+      <div className="relative z-10 flex w-[63.75rem] flex-col gap-10 md:w-80">
         {/* Title section */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 leading-[1.2]">
           <p className="whitespace-pre text-center font-helvetica text-heading-sm text-text-white">
             ●Service
           </p>
-          <h2 className="whitespace-pre font-gothic text-heading-xl text-text-white">
+          <h2 className="whitespace-pre font-gothic text-heading-xl text-text-white md:text-[30px]">
             事業内容
           </h2>
         </div>
 
         {/* Service Cards */}
-        <div className="flex gap-10 md:flex-col">
+        <div className="flex gap-10 md:flex-col md:gap-10">
           {/* リーソル Card */}
-          <div className="flex w-[30.547rem] flex-col gap-10 md:w-full">
+          <div className="flex w-[30.547rem] flex-col gap-10 md:w-80">
             {/* Header */}
-            <div className="flex flex-col gap-0">
-              <p className="font-gothic text-[1.25rem] leading-[1.6] font-medium text-text-white">
+            <div className="flex flex-col gap-0 leading-[1.6]">
+              <p className="font-gothic text-[1.25rem] leading-[1.6] font-medium text-text-white md:text-[20px]">
                 リーソル（リーガルテックプロダクト）
               </p>
-              <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-text-gray">
+              <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-text-gray md:text-base">
                 弁護士版 Cursor として設計された総合文書エディタ
               </p>
             </div>
 
             {/* Image */}
-            <div className="relative h-[8.125rem] w-[16.563rem]">
+            <div className="relative h-[8.125rem] w-[16.563rem] md:w-[265px]">
               <Image
                 src="/assets/images/service_01.png"
                 alt="リーガルテックプロダクト"
@@ -41,8 +41,8 @@ const Service = () => {
             </div>
 
             {/* Details */}
-            <div className="flex flex-col gap-0">
-              <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+            <div className="flex flex-col gap-0 leading-[0]">
+              <div className="whitespace-pre-wrap font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:w-80 md:text-base">
                 <p className="mb-0">
                   形態：Microsoft Word プラグイン（現行フローを維持）
                 </p>
@@ -51,10 +51,10 @@ const Service = () => {
               </div>
 
               <div className="mt-6 flex flex-col gap-0">
-                <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+                <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:text-base">
                   主要機能
                 </p>
-                <div className="mt-2 whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+                <div className="mt-2 whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:w-[163.941px] md:text-[13px]">
                   <p className="mb-0">・定義語ジャンプ機能</p>
                   <p className="mb-0">・参照ジャンプ機能</p>
                   <p className="mb-0">・条文番号自動リナンバー</p>
@@ -67,19 +67,19 @@ const Service = () => {
           </div>
 
           {/* 受託開発 Card */}
-          <div className="flex w-[30.547rem] flex-col gap-10 md:w-full">
+          <div className="flex w-[30.547rem] flex-col gap-10 md:w-80">
             {/* Header */}
-            <div className="flex flex-col gap-0">
-              <p className="font-gothic text-[1.25rem] leading-[1.6] font-medium text-text-white">
+            <div className="flex flex-col gap-0 leading-[1.6]">
+              <p className="font-gothic text-[1.25rem] leading-[1.6] font-medium text-text-white md:text-[20px]">
                 士業向け受託開発サービス
               </p>
-              <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-text-gray">
+              <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-text-gray md:text-base">
                 士業事務所の業務に特化したシステム開発
               </p>
             </div>
 
             {/* Image */}
-            <div className="relative h-[8.125rem] w-[14.563rem]">
+            <div className="relative h-[8.125rem] w-[14.563rem] md:w-[233px]">
               <Image
                 src="/assets/images/service_02.png"
                 alt="受託開発サービス"
@@ -89,13 +89,13 @@ const Service = () => {
             </div>
 
             {/* Details */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 leading-[0] md:gap-4">
               {/* リーソルカスタマイズ開発 */}
-              <div className="flex flex-col gap-0">
-                <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+              <div className="flex flex-col gap-0 md:w-80">
+                <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:text-base">
                   ■リーソルカスタマイズ開発
                 </p>
-                <div className="mt-2 whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+                <div className="mt-2 whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:w-80 md:text-[13px]">
                   <p className="mb-0">・事務所固有の文書テンプレート対応</p>
                   <p className="mb-0">・既存基幹システムとの連携開発</p>
                   <p>・特殊な業務フローに合わせた機能追加</p>
@@ -104,17 +104,17 @@ const Service = () => {
 
               {/* 業務効率化システム開発 */}
               <div className="flex flex-col gap-0">
-                <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+                <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:text-base">
                   ■業務効率化システム開発
                 </p>
-                <div className="mt-2 flex gap-8">
-                  <div className="whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
-                    <p className="mb-0">GAS（Google Apps Script）活用</p>
+                <div className="mt-2 flex gap-8 md:flex-col md:gap-0">
+                  <div className="whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:w-[145px] md:text-[11px]">
+                    <p className="mb-0">GAS(Google Apps Script)活用</p>
                     <p className="mb-0">・繰り返し作業の自動化</p>
                     <p className="mb-0">・データ入力・集計の効率化</p>
                     <p>・顧客管理システムの構築</p>
                   </div>
-                  <div className="whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+                  <div className="whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:w-[145px] md:text-[11px]">
                     <p className="mb-0">業務管理システム</p>
                     <p className="mb-0">・案件管理・進捗管理システム</p>
                     <p className="mb-0">・顧客情報統合管理</p>
@@ -124,11 +124,11 @@ const Service = () => {
               </div>
 
               {/* システム移行 */}
-              <div className="flex flex-col gap-0">
-                <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+              <div className="flex flex-col gap-0 md:w-80">
+                <p className="font-gothic text-[1rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:text-base">
                   ■システム移行
                 </p>
-                <div className="mt-2 whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)]">
+                <div className="mt-2 whitespace-pre-wrap font-gothic text-[0.813rem] leading-[1.6] font-medium text-[rgba(255,255,255,0.5)] md:w-80 md:text-[11px]">
                   <p className="mb-0">オンプレミスからクラウドへの移行</p>
                   <p className="mb-0">・レガシーシステムのクラウド化</p>
                   <p className="mb-0">・データ移行・セキュリティ強化</p>
