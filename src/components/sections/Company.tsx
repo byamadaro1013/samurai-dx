@@ -1,0 +1,93 @@
+import React from "react";
+import Image from "next/image";
+
+const Company = () => {
+  return (
+    <section className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-[7.5rem]">
+      {/* Content */}
+      <div className="relative z-10 flex w-[63.75rem] flex-col gap-10 md:w-full md:px-6">
+        {/* Title section */}
+        <div className="flex flex-col gap-2">
+          <p className="whitespace-pre text-center font-helvetica text-heading-sm text-text-white">
+            ●Company
+          </p>
+          <h2 className="whitespace-pre font-gothic text-heading-xl text-text-white">
+            会社概要
+          </h2>
+        </div>
+
+        {/* Company Info */}
+        <div className="flex gap-10 md:flex-col">
+          {/* Logo */}
+          <div className="flex w-[15rem] items-center justify-center md:w-full">
+            <div className="relative h-[8.313rem] w-[15rem]">
+              <Image
+                src="/assets/images/logo/logo.svg"
+                alt="SamurAI DX Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Info Table */}
+          <div className="flex flex-1 flex-col">
+            {/* Row 1: 社名 */}
+            <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5">
+              <div className="w-[9.125rem] font-gothic text-[1rem] leading-[1.2] font-medium text-text-gray">
+                社名
+              </div>
+              <div className="flex-1 font-gothic text-[1rem] leading-[1.2] font-medium text-text-white">
+                株式会社 SamurAI DX
+              </div>
+            </div>
+
+            {/* Row 2: 住所 */}
+            <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5">
+              <div className="w-[9.125rem] font-gothic text-[1rem] leading-[1.2] font-medium text-text-gray">
+                住所
+              </div>
+              <div className="flex-1 font-gothic text-[1rem] leading-[1.6] font-medium text-text-white">
+                〒112-3456
+                <br />
+                まるまる県まるまる市まるまる区まるまる
+              </div>
+            </div>
+
+            {/* Row 3: 設立日 */}
+            <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5">
+              <div className="w-[9.125rem] font-gothic text-[1rem] leading-[1.2] font-medium text-text-gray">
+                設立日
+              </div>
+              <div className="flex-1 font-gothic text-[1rem] leading-[1.2] font-medium text-text-white">
+                2025年10月
+              </div>
+            </div>
+
+            {/* Row 4: 資本金 */}
+            <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5">
+              <div className="w-[9.125rem] font-gothic text-[1rem] leading-[1.2] font-medium text-text-gray">
+                資本金
+              </div>
+              <div className="flex-1 font-gothic text-[1rem] leading-[1.2] font-medium text-text-white">
+                株式会社 SamurAI DX
+              </div>
+            </div>
+
+            {/* Row 5: 代表者名 */}
+            <div className="flex py-5">
+              <div className="w-[9.125rem] font-gothic text-[1rem] leading-[1.2] font-medium text-text-gray">
+                代表者名
+              </div>
+              <div className="flex-1 font-gothic text-[1rem] leading-[1.2] font-medium text-text-white">
+                橋本祐弥
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Company;
