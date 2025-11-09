@@ -17,13 +17,45 @@ export default {
         pc: "62.5rem",
       },
       colors: {
-        // samurai-dx specific colors will be defined here
+        background: {
+          dark: "#161616",
+          accent: "#202227",
+        },
+        primary: {
+          blue: "#0085ff",
+        },
+        text: {
+          white: "#FFFFFF",
+          gray: "rgba(255, 255, 255, 0.85)",
+        },
       },
       fontSize: {
-        // samurai-dx specific font sizes will be defined here
+        "heading-xl": [
+          "1.875rem", // 30px
+          {
+            lineHeight: "1.2",
+            fontWeight: "500",
+          },
+        ],
+        "heading-sm": [
+          "1rem", // 16px
+          {
+            lineHeight: "1.2",
+            fontWeight: "700",
+          },
+        ],
+        "body-lg": [
+          "1.25rem", // 20px
+          {
+            lineHeight: "3",
+            fontWeight: "500",
+          },
+        ],
       },
       fontFamily: {
-        // samurai-dx specific fonts will be defined here
+        helvetica: ["Helvetica Neue", "sans-serif"],
+        gothic: ["A-OTF A1Gothic StdN", "Noto Sans JP", "sans-serif"],
+        hiragino: ["Hiragino Sans", "Hiragino Kaku Gothic ProN", "sans-serif"],
       },
     },
   },
