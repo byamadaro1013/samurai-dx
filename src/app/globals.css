@@ -7,7 +7,7 @@ html {
     font-size: 16px;
   }
   @media (max-width: 768px) {
-    font-size: calc(16 / 375 * 100vw);
+    font-size: calc(16 / 402 * 100vw);
   }
 }
 

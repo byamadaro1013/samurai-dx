@@ -26,18 +26,19 @@ const Member = () => {
         </div>
 
         {/* Members Grid */}
-        <div className="mt-6 grid w-screen grid-cols-[500px_500px] justify-between gap-10 md:mt-10 md:flex-col md:gap-10">
+        <div className="mt-6 grid w-screen grid-cols-[500px_500px] justify-between gap-10 md:mt-0 md:w-80 md:grid-cols-1 md:flex-col md:gap-10">
           {/* Member 1: 橋本祐弥 */}
           <div className="flex flex-1 flex-col gap-6 leading-[0]">
             {/* Photo and Name Container */}
             <div className="relative">
               {/* Photo Container */}
-              <div className="relative aspect-[500/612] w-full overflow-hidden">
+              <div className="relative w-full overflow-hidden">
                 <Image
                   src="/assets/images/member_01.png"
                   alt="橋本祐弥"
                   width={500}
                   height={612}
+                  className="h-[612px] w-[500px] object-cover md:h-[318px] md:w-[197px]"
                 />
               </div>
 
@@ -47,7 +48,7 @@ const Member = () => {
                 alt="橋本祐弥"
                 width={137}
                 height={341}
-                className="absolute -right-40 top-32"
+                className="absolute -right-40 top-32 md:right-0 md:top-0"
               />
             </div>
 
@@ -66,12 +67,13 @@ const Member = () => {
             {/* Photo and Name Container */}
             <div className="relative">
               {/* Photo Container */}
-              <div className="relative aspect-[500/612] w-full overflow-hidden">
+              <div className="relative w-full overflow-hidden md:flex md:justify-end">
                 <Image
                   src="/assets/images/member_02.png"
                   alt="山田魁"
                   width={500}
                   height={612}
+                  className="h-[612px] w-[500px] object-cover md:h-[318px] md:w-[197px]"
                 />
               </div>
 
@@ -80,7 +82,7 @@ const Member = () => {
                 alt="山田魁"
                 width={137}
                 height={339}
-                className="absolute -left-40 top-32"
+                className="absolute -left-40 top-32 md:left-0 md:top-0"
               />
             </div>
 
@@ -104,7 +106,7 @@ const Member = () => {
         </div>
 
         {/* JOIN US Button */}
-        <div className="absolute bottom-40 left-1/2 mt-10 flex -translate-x-1/2 justify-center md:justify-start">
+        <div className="absolute bottom-40 left-1/2 mt-10 flex -translate-x-1/2 justify-center md:relative md:bottom-0 md:mt-0 md:justify-start">
           <button
             onClick={handleContactClick}
             className="flex flex-col items-center justify-center gap-1 whitespace-pre border border-solid border-white px-10 py-2 font-gothic not-italic transition-colors hover:bg-white/10 md:gap-1 md:px-10 md:py-2"
