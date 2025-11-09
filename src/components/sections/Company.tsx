@@ -15,20 +15,18 @@ const Company = () => {
         </div>
 
         <div className="flex gap-10 md:flex-col md:gap-10">
-          <div className="flex w-[15rem] items-center justify-center md:w-full">
-            <div className="relative h-[8.313rem] w-[15rem]">
-              <Image
-                src="/assets/images/logo/logo.svg"
-                alt="SamurAI DX Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
+          <div className="flex w-[15rem] items-center justify-center md:w-full md:justify-start">
+            <Image
+              src="/assets/images/logo/logo.svg"
+              alt="SamurAI DX Logo"
+              width={240}
+              height={133}
+            />
           </div>
 
           <div className="flex flex-1 flex-col">
             <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-auto md:text-base">
+              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
                 社名
               </div>
               <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.2] text-text-white md:text-base">
@@ -37,7 +35,7 @@ const Company = () => {
             </div>
 
             <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-auto md:text-base">
+              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
                 住所
               </div>
               <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.6] text-text-white md:text-base">
@@ -48,7 +46,7 @@ const Company = () => {
             </div>
 
             <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-auto md:text-base">
+              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
                 設立日
               </div>
               <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.2] text-text-white md:text-base">
@@ -57,7 +55,7 @@ const Company = () => {
             </div>
 
             <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-auto md:text-base">
+              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
                 資本金
               </div>
               <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.2] text-text-white md:text-base">
@@ -66,7 +64,7 @@ const Company = () => {
             </div>
 
             <div className="flex py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-auto md:text-base">
+              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
                 代表者名
               </div>
               <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.2] text-text-white md:text-base">
