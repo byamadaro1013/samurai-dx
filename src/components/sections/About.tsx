@@ -2,7 +2,10 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-[7.5rem] md:py-20">
+    <section
+      id="about"
+      className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-[7.5rem] md:py-20"
+    >
       {/* Content */}
       <div className="relative z-10 flex w-[63.75rem] flex-col gap-10 md:w-80">
         {/* Title section */}

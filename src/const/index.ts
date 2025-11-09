@@ -13,8 +13,8 @@ export const HEADER_NAV = [
     href: "#service",
   },
   {
-    label: "Team",
-    href: "#team",
+    label: "Member",
+    href: "#member",
   },
   {
     label: "Company",

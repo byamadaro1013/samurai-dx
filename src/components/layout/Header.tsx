@@ -29,15 +29,8 @@ const Header = () => {
       <div className="flex items-center gap-14">
         {/* Navigation Links */}
         <ul className="flex items-center justify-center gap-10">
-          {HEADER_NAV.map((nav, index) => (
-            <li
-              key={nav.label}
-              className=""
-              style={{
-                left: `${index === 0 ? 0 : index === 1 ? 98 : index === 2 ? 185 : index === 3 ? 292 : 385}px`,
-                width: `${index === 0 ? 58 : index === 1 ? 47 : index === 2 ? 67 : index === 3 ? 53 : 91}px`,
-              }}
-            >
+          {HEADER_NAV.map((nav) => (
+            <li key={nav.label} className="">
               <Link href={nav.href}>
                 <p className="whitespace-pre text-nowrap text-center font-['Brown',sans-serif] text-[20px] font-normal not-italic leading-[1.2] text-white/50 transition-colors hover:text-white/70">
                   {nav.label}

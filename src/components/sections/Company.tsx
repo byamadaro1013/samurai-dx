@@ -3,7 +3,10 @@ import Image from "next/image";
 
 const Company = () => {
   return (
-    <section className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-20">
+    <section
+      id="company"
+      className="relative flex flex-col items-center gap-10 bg-background-dark px-0 py-20"
+    >
       <div className="relative z-10 flex w-[63.75rem] flex-col gap-10 md:w-80">
         <div className="flex flex-col gap-2 leading-[1.2]">
           <p className="whitespace-pre font-helvetica text-heading-sm text-text-white">

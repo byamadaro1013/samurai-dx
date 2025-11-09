@@ -12,7 +12,10 @@ const Member = () => {
   };
 
   return (
-    <section className="relative flex flex-col items-center bg-background-dark px-0 py-20">
+    <section
+      id="member"
+      className="relative flex flex-col items-center bg-background-dark px-0 py-20"
+    >
       {/* Content */}
       <div className="relative z-10 flex flex-col gap-10">
         {/* Title section */}
