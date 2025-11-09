@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-[#161616] py-1.5 pl-40 pr-5 md:hidden">
+    <header className="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-background-dark py-1.5 pl-40 pr-5 md:hidden">
       <Link href="/">
         <Image
           src="/assets/images/logo/logo.svg"
