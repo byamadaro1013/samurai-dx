@@ -14,10 +14,10 @@ const Member = () => {
   return (
     <section className="relative flex flex-col items-center bg-background-dark px-0 py-20">
       {/* Content */}
-      <div className="relative z-10 flex w-[63.75rem] flex-col gap-10 md:w-80">
+      <div className="relative z-10 flex flex-col gap-10">
         {/* Title section */}
-        <div className="flex flex-col gap-2 leading-[1.2]">
-          <p className="whitespace-pre text-center font-helvetica text-heading-sm text-text-white">
+        <div className="mx-auto flex w-[63.75rem] flex-col gap-2 leading-[1.2] md:w-80">
+          <p className="whitespace-pre font-helvetica text-heading-sm text-text-white">
             ●Member
           </p>
           <h2 className="whitespace-pre font-gothic text-heading-xl text-text-white md:text-[30px]">
@@ -26,7 +26,7 @@ const Member = () => {
         </div>
 
         {/* Members Grid */}
-        <div className="flex gap-10 mt-6 md:mt-10 md:flex-col md:gap-10">
+        <div className="mt-6 grid w-screen grid-cols-[500px_500px] justify-between gap-10 md:mt-10 md:flex-col md:gap-10">
           {/* Member 1: 橋本祐弥 */}
           <div className="flex flex-1 flex-col gap-6 leading-[0]">
             {/* Photo and Name Container */}
@@ -36,29 +36,23 @@ const Member = () => {
                 <Image
                   src="/assets/images/member_01.png"
                   alt="橋本祐弥"
-                  fill
-                  className="object-cover"
+                  width={500}
+                  height={612}
                 />
               </div>
 
               {/* Name Plate - Positioned absolutely on SP */}
-              <div className="flex items-end gap-4 md:absolute md:right-0 md:top-0 md:flex-row-reverse md:gap-0">
-                <div className="flex flex-col items-center bg-white px-2 py-1 md:h-[246px] md:w-[57.464px] md:px-0 md:py-0 md:pt-[5px]">
-                  <p className="whitespace-pre text-center font-hiragino text-[3.75rem] leading-[4rem] font-semibold text-background-dark md:text-[60px] md:leading-[64px]">
-                    橋
-                    <br />本<br />祐
-                    <br />弥
-                  </p>
-                </div>
-                <div className="mb-2 whitespace-pre text-right font-hiragino text-[0.813rem] leading-[1.75rem] font-semibold text-text-white md:mb-0 md:mr-[-168.024px] md:mt-[285px] md:w-[168.024px] md:text-[13px] md:leading-[28px]">
-                  <p className="mb-0">株式会社SamurAI DX</p>
-                  <p>代表取締役CEO</p>
-                </div>
-              </div>
+              <Image
+                src="/assets/images/member_01_name.png"
+                alt="橋本祐弥"
+                width={137}
+                height={341}
+                className="absolute -right-40 top-32"
+              />
             </div>
 
             {/* Bio */}
-            <div className="font-gothic text-[0.813rem] leading-[1.5] font-medium text-[rgba(255,255,255,0.5)] md:w-[302.065px] md:text-[13px] md:leading-[24px]">
+            <div className="font-gothic text-[0.813rem] font-medium leading-[1.5] text-[rgba(255,255,255,0.5)] md:w-[302.065px] md:text-[13px] md:leading-[24px]">
               <p className="mb-0">
                 森・濱田松本法律事務所を退職後、個人事務所を立ち上げ独立し、弁護士業務に従事。弁護士資格と弁護士業界での深いネットワークから、士業の問題を深く捉え、顧客からの高い信頼と法律実務の現場を知り尽くした製品設計能力を強みとする。2025年10月に株式会社
                 SamurAI
@@ -76,28 +70,22 @@ const Member = () => {
                 <Image
                   src="/assets/images/member_02.png"
                   alt="山田魁"
-                  fill
-                  className="object-cover"
+                  width={500}
+                  height={612}
                 />
               </div>
 
-              {/* Name Plate - Positioned absolutely on SP */}
-              <div className="flex items-end gap-4 md:absolute md:left-0 md:top-0 md:gap-0">
-                <div className="flex flex-col items-center bg-white px-2 py-1 md:h-[246px] md:w-[63.832px] md:px-0 md:py-0">
-                  <p className="whitespace-pre text-center font-hiragino text-[3.75rem] leading-[4rem] font-semibold text-background-dark md:mt-[27px] md:text-[60px] md:leading-[64px]">
-                    山
-                    <br />田<br />魁
-                  </p>
-                </div>
-                <div className="mb-2 whitespace-pre font-hiragino text-[0.813rem] leading-[1.75rem] font-semibold text-text-white md:mb-0 md:mt-[283px] md:w-[145.751px] md:text-[13px] md:leading-[28px]">
-                  <p className="mb-0">株式会社SamurAI DX</p>
-                  <p>取締役CTO</p>
-                </div>
-              </div>
+              <Image
+                src="/assets/images/member_02_name.png"
+                alt="山田魁"
+                width={137}
+                height={339}
+                className="absolute -left-40 top-32"
+              />
             </div>
 
             {/* Bio */}
-            <div className="font-gothic text-[0.813rem] leading-[1.5] font-medium text-[rgba(255,255,255,0.5)] md:w-80 md:text-[13px] md:leading-[24px]">
+            <div className="font-gothic text-[0.813rem] font-medium leading-[1.5] text-[rgba(255,255,255,0.5)] md:w-80 md:text-[13px] md:leading-[24px]">
               <p className="mb-0">
                 大学時代に、ベンチャーキャピタル「SAMURAI
                 INCUBATE」でインターンを経験。
@@ -116,7 +104,7 @@ const Member = () => {
         </div>
 
         {/* JOIN US Button */}
-        <div className="mt-10 flex justify-center md:justify-start">
+        <div className="absolute bottom-40 left-1/2 mt-10 flex -translate-x-1/2 justify-center md:justify-start">
           <button
             onClick={handleContactClick}
             className="flex flex-col items-center justify-center gap-1 whitespace-pre border border-solid border-white px-10 py-2 font-gothic not-italic transition-colors hover:bg-white/10 md:gap-1 md:px-10 md:py-2"
