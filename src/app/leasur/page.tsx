@@ -4,6 +4,7 @@ import About from "@/components/sections/leasur/About";
 import Service from "@/components/sections/leasur/Service";
 import Leasure from "@/components/sections/leasur/Leasure";
 import Faq from "@/components/sections/leasur/Faq";
+import LeasureMin from "@/components/sections/leasur/LeasureMin";
 
 export default function Leasur() {
   return (
@@ -16,6 +17,7 @@ export default function Leasur() {
       <Service />
       <Leasure />
       <Faq />
+      <LeasureMin />
     </main>
   );
 }
