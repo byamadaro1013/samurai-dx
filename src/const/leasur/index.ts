@@ -170,6 +170,31 @@ export const FAQ_DATA = [
   },
 ];
 
+// Company Data
+export const COMPANY_DATA = [
+  {
+    label: "社名",
+    value: "株式会社 SamurAI DX",
+  },
+  {
+    label: "住所",
+    value: ["〒112-3456", "東京都中野区本町2-41-7"],
+  },
+  {
+    label: "設立日",
+    value: "2024年4月",
+  },
+  {
+    label: "連絡先",
+    value: "kai.yamada@orgai.info",
+    isLink: true,
+  },
+  {
+    label: "代表者名",
+    value: "橋本祐弥 ？？？",
+  },
+];
+
 // Vercel Analytics Events
 export const VercelAnalyticsApplyButtonClick =
   "leasur_apply_button_click";
