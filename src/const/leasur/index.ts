@@ -147,6 +147,29 @@ export const SERVICES = [
   },
 ];
 
+// FAQ Data
+export const FAQ_DATA = [
+  {
+    question: "Q. 導入にはどれくらい時間がかかりますか?",
+    answer: [
+      "A. リーソルはMicrosoft Wordのプラグインとして提供されるため、数分で簡単にインストールが完了します。",
+      "特別な環境設定は不要で、すぐに使い始められます。",
+    ],
+  },
+  {
+    question: "Q. 初期費用はかかりますか?",
+    answer: ["A. いいえ、初期費用はかかりません。ご利用端末数に応じた月額費用制です。"],
+  },
+  {
+    question:
+      "Q. 他にもリーガルテックの製品を活用しているのですが、リーソルを追加で利用することは出来ますか?",
+    answer: [
+      "A. はい、可能です。リーソルはMicrosoft Wordのプラグインとして動作するため、他のリーガルテック製品と競合することなく併用いただけます。",
+      "既存のワークフローを妨げることなく、文書作成の効率化を実現します。",
+    ],
+  },
+];
+
 // Vercel Analytics Events
 export const VercelAnalyticsApplyButtonClick =
   "leasur_apply_button_click";

@@ -3,6 +3,7 @@ import Issue from "@/components/sections/leasur/Issue";
 import About from "@/components/sections/leasur/About";
 import Service from "@/components/sections/leasur/Service";
 import Leasure from "@/components/sections/leasur/Leasure";
+import Faq from "@/components/sections/leasur/Faq";
 
 export default function Leasur() {
   return (
@@ -14,6 +15,7 @@ export default function Leasur() {
       </div>
       <Service />
       <Leasure />
+      <Faq />
     </main>
   );
 }
