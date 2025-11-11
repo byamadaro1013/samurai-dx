@@ -1,6 +1,7 @@
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/leasur/Header";
+import Footer from "@/components/layout/leasur/Footer";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className={`${notoSansJP.className}`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
