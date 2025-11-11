@@ -25,9 +25,12 @@ const Header = () => {
     <header className="fixed left-0 top-0 z-50 flex h-[80px] w-full items-center justify-between bg-white px-10 shadow-[0px_0px_40px_0px_rgba(0,0,0,0.25)] md:hidden">
       {/* Logo */}
       <Link href="/leasur">
-        <h1 className="whitespace-pre font-['kateru_font_ver1.0',sans-serif] text-[40px] font-normal not-italic leading-[28px] tracking-[3.2px] text-[#2ba1db]">
-          LESOL
-        </h1>
+        <Image
+          src="/assets/images/leasur/logo/logo_main.svg"
+          alt="Leasur"
+          width={136}
+          height={32}
+        />
       </Link>
 
       {/* Navigation and Buttons Container */}
