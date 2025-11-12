@@ -3,7 +3,10 @@ import Image from "next/image";
 
 const LeasureMin = () => {
   return (
-    <section className="relative flex size-full flex-col items-center gap-10 bg-[#2ba1db] px-0 py-20">
+    <section
+      id="apply"
+      className="relative flex size-full flex-col items-center gap-10 bg-[#2ba1db] px-0 py-20"
+    >
       <div className="relative flex w-[46.313rem] flex-col items-start gap-10 md:w-full md:px-9">
         {/* Text Section */}
         <div className="relative flex w-full flex-col items-center gap-4 md:gap-4">

@@ -3,6 +3,8 @@
 
 html {
   font-size: calc(16 / 1440 * 100vw);
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   @media (min-width: 1440px) {
     font-size: 16px;
   }

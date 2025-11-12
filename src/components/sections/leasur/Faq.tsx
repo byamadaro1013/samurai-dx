@@ -3,7 +3,10 @@ import { FAQ_DATA } from "@/const/leasur";
 
 const Faq = () => {
   return (
-    <section className="relative flex size-full flex-col items-center gap-10 bg-slate-100 px-0 py-20">
+    <section
+      id="faq"
+      className="relative flex size-full flex-col items-center gap-10 bg-slate-100 px-0 py-20"
+    >
       <div className="flex flex-col items-start gap-10 md:w-[348px]">
         {/* Title Section */}
         <div className="flex flex-col items-start gap-4 leading-[0] md:gap-4">

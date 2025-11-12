@@ -3,7 +3,10 @@ import { COMPANY_DATA } from "@/const/leasur";
 
 const Company = () => {
   return (
-    <section className="relative flex size-full flex-col items-center gap-10 px-0 py-20">
+    <section
+      id="contact"
+      className="relative flex size-full flex-col items-center gap-10 px-0 py-20"
+    >
       <div className="flex w-[64.375rem] flex-col items-start gap-5 md:w-[332px] md:gap-10">
         {/* Title Section */}
         <div className="flex flex-col items-start gap-2 whitespace-pre text-nowrap text-center">
