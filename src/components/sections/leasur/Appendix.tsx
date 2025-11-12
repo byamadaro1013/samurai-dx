@@ -2,7 +2,7 @@ import React from "react";
 
 const Appendix = () => {
   return (
-    <section className="relative flex size-full flex-col items-center gap-10 px-0 py-20">
+    <section className="relative flex size-full flex-col items-center gap-10 px-0 py-20 md:px-9">
       <div className="flex w-[64.375rem] flex-col items-start gap-10 md:w-full">
         {/* Text Section */}
         <div className="flex flex-col items-start gap-2 md:gap-2">
