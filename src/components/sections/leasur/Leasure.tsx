@@ -33,9 +33,9 @@ const Leasure = () => {
               <p className="relative whitespace-pre font-gothic text-base tracking-[0.48px] text-white">
                 デモを申し込む
               </p>
-              <div className="flex size-[14px] rotate-90 items-center justify-center">
+              <div className="flex size-[14px] items-center justify-center">
                 <Image
-                  src="/assets/images/leasur/arrow-icon.svg"
+                  src="/assets/images/icons/triangle_left_white.svg"
                   alt=""
                   width={14}
                   height={14}
@@ -53,9 +53,9 @@ const Leasure = () => {
               <p className="relative whitespace-pre font-gothic text-base tracking-[0.48px] text-white">
                 資料ダウンロード ＋ 料金のご相談
               </p>
-              <div className="flex size-[14px] rotate-90 items-center justify-center">
+              <div className="flex size-[14px] items-center justify-center">
                 <Image
-                  src="/assets/images/leasur/arrow-icon.svg"
+                  src="/assets/images/icons/triangle_left_white.svg"
                   alt=""
                   width={14}
                   height={14}
