@@ -4,7 +4,7 @@ import { COMPANY_DATA } from "@/const/leasur";
 const Company = () => {
   return (
     <section className="relative flex size-full flex-col items-center gap-10 px-0 py-20">
-      <div className="flex w-[64.375rem] flex-col items-start gap-5 md:w-80">
+      <div className="flex w-[64.375rem] flex-col items-start gap-5 md:w-[332px] md:gap-10">
         {/* Title Section */}
         <div className="flex flex-col items-start gap-2 whitespace-pre text-nowrap text-center">
           <p className="font-helvetica text-base font-bold leading-4 text-[#2ba1db]">
@@ -20,8 +20,8 @@ const Company = () => {
           {COMPANY_DATA.map((item, index) => (
             <React.Fragment key={index}>
               {/* Info Row */}
-              <div className="grid w-full grid-cols-[auto_1fr] items-center border-b border-[rgba(0,0,0,0.2)] py-5 text-base leading-[1.2]">
-                <p className="font-gothic-r relative w-[146px] text-[rgba(0,0,0,0.5)]">
+              <div className="grid w-full grid-cols-[auto_1fr] items-center border-b border-[rgba(0,0,0,0.2)] py-5 text-base leading-[1.2] md:items-start md:py-[10px]">
+                <p className="font-gothic-r relative w-[146px] text-[rgba(0,0,0,0.5)] md:w-20">
                   {item.label}
                 </p>
                 <div>
@@ -34,11 +34,11 @@ const Company = () => {
                       ))}
                     </div>
                   ) : item.isLink ? (
-                    <p className="w-[273.538px] font-gothic text-black underline decoration-solid">
+                    <p className="w-[273.538px] font-gothic text-black underline decoration-solid md:w-auto">
                       {item.value}
                     </p>
                   ) : (
-                    <p className="w-[273.538px] font-gothic text-black">
+                    <p className="w-[273.538px] font-gothic text-black md:w-auto">
                       {item.value}
                     </p>
                   )}

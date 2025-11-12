@@ -158,7 +158,9 @@ export const FAQ_DATA = [
   },
   {
     question: "Q. 初期費用はかかりますか?",
-    answer: ["A. いいえ、初期費用はかかりません。ご利用端末数に応じた月額費用制です。"],
+    answer: [
+      "A. いいえ、初期費用はかかりません。ご利用端末数に応じた月額費用制です。",
+    ],
   },
   {
     question:
@@ -196,7 +198,6 @@ export const COMPANY_DATA = [
 ];
 
 // Vercel Analytics Events
-export const VercelAnalyticsApplyButtonClick =
-  "leasur_apply_button_click";
+export const VercelAnalyticsApplyButtonClick = "leasur_apply_button_click";
 export const VercelAnalyticsDownloadButtonClick =
   "leasur_download_button_click";
