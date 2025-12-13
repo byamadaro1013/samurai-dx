@@ -43,21 +43,18 @@ const Header = () => {
         {/* External Links */}
         <div className="flex items-center gap-4">
           {/* 激安AI顧問 Button */}
-          <a
-            href="https://www.gekiyasuaikomon.jp/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/leasur"
             className="flex items-center justify-center rounded-sm bg-white px-4 py-2"
           >
             <Image
-              src="/assets/images/logo/ai-komon-logo.png"
+              src="/assets/images/leasur/logo/logo_main.svg"
               alt="激安AI顧問"
-              width={1106}
-              height={261}
-              className="h-auto w-36"
-              unoptimized
+              width={136}
+              height={32}
+              className="h-auto w-28"
             />
-          </a>
+          </Link>
 
           {/* JOIN US Button */}
           <button
