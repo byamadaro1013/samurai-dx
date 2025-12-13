@@ -31,3 +31,6 @@ export const JOIN_US_BUTTON = {
 // Vercel Analytics Events
 export const VercelAnalyticsContactButtonClick =
   "samurai-dx_contact_button_click";
+
+// Site Configuration
+export const SITE_URL = "https://www.samuraidx.co.jp";
