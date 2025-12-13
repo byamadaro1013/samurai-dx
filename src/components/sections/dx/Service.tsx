@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Service = () => {
   return (
@@ -36,6 +37,13 @@ const Service = () => {
                 className="object-contain"
               />
             </div>
+
+            <Link
+              href="/leasur"
+              className="inline-flex w-fit items-center justify-center rounded-md border border-solid border-white px-8 py-3 text-base text-white hover:bg-white hover:text-black"
+            >
+              サービス紹介はこちらから
+            </Link>
 
             <div className="flex flex-col gap-0 leading-[0]">
               <div className="whitespace-pre-wrap font-gothic text-[1rem] font-medium leading-[1.6] text-[rgba(255,255,255,0.5)] md:w-80 md:text-base">
