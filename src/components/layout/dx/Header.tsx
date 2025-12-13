@@ -40,18 +40,38 @@ const Header = () => {
           ))}
         </ul>
 
-        {/* JOIN US Button */}
-        <button
-          onClick={handleContactClick}
-          className="flex flex-col items-center justify-center gap-[4px] whitespace-pre text-nowrap border border-solid border-white px-[40px] py-[8px] font-['A-OTF_A1Gothic_StdN',sans-serif] not-italic transition-colors hover:bg-white/10"
-        >
-          <p className="relative shrink-0 text-[35px] leading-none text-white/85">
-            {JOIN_US_BUTTON.mainText}
-          </p>
-          <p className="relative shrink-0 text-[13px] leading-[13px] text-white/50">
-            {JOIN_US_BUTTON.subText}
-          </p>
-        </button>
+        {/* External Links */}
+        <div className="flex items-center gap-4">
+          {/* 激安AI顧問 Button */}
+          <a
+            href="https://www.gekiyasuaikomon.jp/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center rounded-sm bg-white px-4 py-2"
+          >
+            <Image
+              src="/assets/images/logo/ai-komon-logo.png"
+              alt="激安AI顧問"
+              width={1106}
+              height={261}
+              className="h-auto w-36"
+              unoptimized
+            />
+          </a>
+
+          {/* JOIN US Button */}
+          <button
+            onClick={handleContactClick}
+            className="flex flex-col items-center justify-center gap-[4px] whitespace-pre text-nowrap border border-solid border-white px-[40px] py-[8px] font-['A-OTF_A1Gothic_StdN',sans-serif] not-italic transition-colors hover:bg-white/10"
+          >
+            <p className="relative shrink-0 text-[35px] leading-none text-white/85">
+              {JOIN_US_BUTTON.mainText}
+            </p>
+            <p className="relative shrink-0 text-[13px] leading-[13px] text-white/50">
+              {JOIN_US_BUTTON.subText}
+            </p>
+          </button>
+        </div>
       </div>
     </header>
   );
