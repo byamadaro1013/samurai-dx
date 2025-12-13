@@ -180,20 +180,20 @@ export const COMPANY_DATA = [
   },
   {
     label: "住所",
-    value: ["〒112-3456", "東京都中野区本町2-41-7"],
+    value: ["〒101-0041", "東京都千代田区神田須田町1丁目7番8号　VORT秋葉原Ⅳ 2Ｆ"],
   },
   {
     label: "設立日",
-    value: "2024年4月",
+    value: "2025年12月",
   },
   {
     label: "連絡先",
-    value: "kai.yamada@orgai.info",
+    value: "hashimoto@hm-ptnrs.com",
     isLink: true,
   },
   {
     label: "代表者名",
-    value: "橋本祐弥 ？？？",
+    value: "橋本祐弥",
   },
 ];
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { COMPANY_DATA } from "@/const/leasur";
 
 const Company = () => {
   return (
@@ -28,52 +29,31 @@ const Company = () => {
           </div>
 
           <div className="flex flex-1 flex-col">
-            <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
-                社名
+            {COMPANY_DATA.map((item, index) => (
+              <div
+                key={index}
+                className={`flex py-5 md:py-5 ${
+                  index !== COMPANY_DATA.length - 1
+                    ? "border-b border-[rgba(255,255,255,0.2)]"
+                    : ""
+                }`}
+              >
+                <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
+                  {item.label}
+                </div>
+                <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.6] text-text-white md:text-base">
+                  {Array.isArray(item.value) ? (
+                    <>
+                      {item.value[0]}
+                      <br />
+                      {item.value[1]}
+                    </>
+                  ) : (
+                    item.value
+                  )}
+                </div>
               </div>
-              <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.2] text-text-white md:text-base">
-                株式会社 SamurAI DX
-              </div>
-            </div>
-
-            <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
-                住所
-              </div>
-              <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.6] text-text-white md:text-base">
-                〒112-3456
-                <br />
-                まるまる県まるまる市まるまる区まるまる
-              </div>
-            </div>
-
-            <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
-                設立日
-              </div>
-              <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.2] text-text-white md:text-base">
-                2025年10月
-              </div>
-            </div>
-
-            <div className="flex border-b border-[rgba(255,255,255,0.2)] py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
-                資本金
-              </div>
-              <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.2] text-text-white md:text-base">
-                株式会社 SamurAI DX
-              </div>
-            </div>
-
-            <div className="flex py-5 md:py-5">
-              <div className="w-[9.125rem] font-gothic text-[1rem] font-medium leading-[1.2] text-text-gray opacity-50 md:w-32 md:text-base">
-                代表者名
-              </div>
-              <div className="flex-1 font-gothic text-[1rem] font-medium leading-[1.2] text-text-white md:text-base">
-                橋本祐弥
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
