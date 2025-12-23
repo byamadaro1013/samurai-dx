@@ -44,36 +44,18 @@ const Header = () => {
               </li>
             ))}
           </ul>
-
-          {/* External Links */}
-          <div className="flex items-center gap-4">
-            {/* 激安AI顧問 Button */}
-            <Link
-              href="/leasur"
-              className="flex items-center justify-center rounded-sm bg-white px-4 py-2"
-            >
-              <Image
-                src="/assets/images/leasur/logo/logo_main.svg"
-                alt="激安AI顧問"
-                width={136}
-                height={32}
-                className="h-auto w-28"
-              />
-            </Link>
-
-            {/* JOIN US Button */}
-            <button
-              onClick={handleContactClick}
-              className="flex flex-col items-center justify-center gap-[4px] whitespace-pre text-nowrap border border-solid border-white px-[40px] py-[8px] font-['A-OTF_A1Gothic_StdN',sans-serif] not-italic transition-colors hover:bg-white/10"
-            >
-              <p className="relative shrink-0 text-[35px] leading-none text-white/85">
-                {JOIN_US_BUTTON.mainText}
-              </p>
-              <p className="relative shrink-0 text-[13px] leading-[13px] text-white/50">
-                {JOIN_US_BUTTON.subText}
-              </p>
-            </button>
-          </div>
+          {/* JOIN US Button */}
+          <button
+            onClick={handleContactClick}
+            className="flex flex-col items-center justify-center gap-[4px] whitespace-pre text-nowrap border border-solid border-white px-[40px] py-[8px] font-['A-OTF_A1Gothic_StdN',sans-serif] not-italic transition-colors hover:bg-white/10"
+          >
+            <p className="relative shrink-0 text-[35px] leading-none text-white/85">
+              {JOIN_US_BUTTON.mainText}
+            </p>
+            <p className="relative shrink-0 text-[13px] leading-[13px] text-white/50">
+              {JOIN_US_BUTTON.subText}
+            </p>
+          </button>
         </div>
       </header>
 
