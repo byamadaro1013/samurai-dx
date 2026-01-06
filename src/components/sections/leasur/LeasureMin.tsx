@@ -12,7 +12,7 @@ const LeasureMin = () => {
         <div className="relative flex w-full flex-col items-center gap-4 md:gap-4">
           <div className="relative inline-grid place-items-start whitespace-pre text-nowrap leading-[0] text-white md:whitespace-break-spaces">
             <p className="relative ml-[373.5px] translate-x-[-50%] text-center font-helvetica text-base font-bold leading-4 md:ml-0 md:translate-x-0">
-              ●LESOL●
+              ●Leasor●
             </p>
             <p className="relative mt-[18px] font-gothic text-[24px] leading-[1.5] tracking-[0.96px] md:w-full">
               リーソルで、法的文書作成の生産性を飛躍的に向上させましょう。
