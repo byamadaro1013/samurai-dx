@@ -31,7 +31,7 @@ const About = () => {
           <div className="h-[405px] w-[402px] flex-shrink-0 md:h-auto md:w-full">
             <Image
               src="/assets/images/leasur/about_reason.png"
-              alt="LESOL"
+              alt="Leasor"
               width={402}
               height={405}
               className="h-full w-full object-cover"

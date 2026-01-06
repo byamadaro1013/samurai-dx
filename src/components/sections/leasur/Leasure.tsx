@@ -8,7 +8,7 @@ const Leasure = () => {
         {/* Text Section */}
         <div className="relative flex w-full flex-col items-start gap-4 whitespace-nowrap text-white md:gap-4">
           <p className="relative whitespace-pre text-center font-helvetica text-[10px] font-bold leading-[10px]">
-            ●LESOL
+            ●Leasor
           </p>
           <div className="relative whitespace-pre font-gothic text-[24px] leading-[1.5] tracking-[0.96px] md:w-full">
             <p className="mb-0 md:whitespace-break-spaces">
