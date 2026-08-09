@@ -15,7 +15,7 @@ import FinalCta from "@/components/sections/google-chat/FinalCta";
 
 export default function GoogleChat() {
   return (
-    <main className="pt-[80px]">
+    <main>
       <Kv />
       <Intro />
       <Problems />

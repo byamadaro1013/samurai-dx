@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 flex h-[80px] w-full items-center justify-between border-b border-solid border-[#e6eef8] bg-white px-[120px] md:px-5">
+    <header className="sticky top-0 z-50 flex h-[80px] w-full items-center justify-between border-b border-solid border-[#e6eef8] bg-white px-[120px] md:px-5">
       {/* Brand */}
       <Link href="/google-chat">
         <div className="flex flex-col gap-[2px] font-semibold">

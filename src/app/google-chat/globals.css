@@ -9,3 +9,10 @@ html {
 body {
   background-color: #ffffff;
 }
+
+/* タブレット幅にはデザインが存在しないため、769px以上はPCデザインを横スクロールで表示する */
+@media (min-width: 769px) {
+  body {
+    min-width: 1440px;
+  }
+}

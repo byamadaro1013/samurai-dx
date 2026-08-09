@@ -44,7 +44,7 @@ const Kv = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="absolute left-[766px] top-[231px] flex w-[620px] flex-col gap-6 md:static md:w-full">
+        <div className="absolute right-[54px] top-[231px] flex w-[620px] flex-col gap-6 md:static md:w-full">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <h1 className="bg-gradient-to-r from-[#f2f2f2] to-white bg-clip-text text-[56px] font-medium leading-[1.2] text-transparent md:text-[30px]">
