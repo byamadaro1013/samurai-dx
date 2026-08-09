@@ -5,7 +5,7 @@ import { WORKSPACE_APPS } from "@/const/google-chat";
 const Intro = () => {
   return (
     <section className="flex flex-col items-center gap-10 bg-white px-[120px] py-20 md:px-5">
-      <div className="text-center text-[15px] font-medium leading-[2.4] text-[#363636]">
+      <div className="text-center text-[15px] font-medium leading-[2.4] text-[#363636] md:text-[14px] md:leading-[1.8] md:[&>p+p]:mt-3">
         <p>Slack・Chatwork・LINE WORKS の月額料金を払い続けるのをやめる。</p>
         <p>あるいは、Gmailしかなくてそもそもチャットがない状態を解消する。</p>
         <p>どちらも、Google Workspace に標準搭載の Google Chat で解決します。</p>
@@ -14,7 +14,7 @@ const Intro = () => {
 
       {/* Support Card */}
       <div className="flex w-full max-w-[1200px] flex-col items-center gap-2.5 rounded-2xl bg-white p-[18px] drop-shadow-[0px_14px_16px_rgba(0,0,0,0.15)]">
-        <p className="text-center text-[24px] font-medium leading-[1.6] text-black md:text-[20px]">
+        <p className="text-center text-[24px] font-medium leading-[1.6] text-black md:text-[18px]">
           チャットツールに、
           <br />
           追加でお金を払う必要はありません。

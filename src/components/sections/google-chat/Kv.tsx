@@ -101,12 +101,12 @@ const Kv = () => {
           </div>
 
           {/* Mobile visual */}
-          <div className="hidden md:block">
+          <div className="hidden overflow-hidden rounded-xl shadow-[0px_4px_24px_8px_rgba(0,0,0,0.25)] md:block">
             <Image
-              src="/assets/images/google-chat/hero_laptop.png"
-              alt="ノートPCに表示されたGoogle Chat"
-              width={671}
-              height={460}
+              src="/assets/images/google-chat/hero_chat.png"
+              alt="Google Chatの画面イメージ"
+              width={610}
+              height={322}
               className="h-auto w-full"
               priority
             />
