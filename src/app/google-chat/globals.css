@@ -1,0 +1,25 @@
+@import "tailwindcss/base";
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+/* タブレット幅にはデザインが存在しないため、1440px未満はPCデザイン(1440px)を等比縮小して表示する。
+   zoom(tan/atan2で100vw÷1440pxの比率を算出)が効かない古いブラウザでは横スクロールにフォールバックする */
+@media (min-width: 769px) {
+  body {
+    min-width: 1440px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1439.98px) {
+  body {
+    zoom: tan(atan2(100vw, 1440px));
+  }
+}
