@@ -1,0 +1,11 @@
+@import "tailwindcss/base";
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: #ffffff;
+}
