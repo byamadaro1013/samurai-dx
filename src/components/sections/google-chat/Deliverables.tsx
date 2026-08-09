@@ -7,7 +7,7 @@ const Deliverables = () => {
     <section className="flex flex-col items-center gap-9 bg-white px-[120px] py-20 md:px-5">
       <h2 className="w-[860px] text-center text-[32px] font-medium leading-[1.6] text-[#061225] md:w-full md:text-[24px]">
         導入・設計・移行・定着支援まで、
-        <br />
+        <br className="md:hidden" />
         必要な作業をまとめて提供します。
       </h2>
 

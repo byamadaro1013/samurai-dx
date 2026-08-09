@@ -26,7 +26,7 @@ const FaqItem = ({
       >
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-white">
-            <p className="font-din text-[32px] font-bold leading-[1.6] tracking-[1.6px]">
+            <p className="font-din text-[32px] font-bold leading-[1.6] tracking-[1.6px] md:text-[24px]">
               Q.
             </p>
             <p className="font-noto-jp text-[16px] leading-[1.7]">
@@ -54,7 +54,7 @@ const FaqItem = ({
       {isOpen && (
         <div className="rounded-b-[10px] border-x border-b border-solid border-black bg-white px-8 py-4 md:px-5">
           <div className="flex items-center gap-4 text-black">
-            <p className="font-din text-[32px] font-bold leading-[1.6] tracking-[1.6px]">
+            <p className="font-din text-[32px] font-bold leading-[1.6] tracking-[1.6px] md:text-[24px]">
               A.
             </p>
             <p className="font-noto-jp flex-1 text-[14px] leading-[1.8] tracking-[0.42px]">
@@ -84,7 +84,7 @@ const Faq = () => {
         </p>
         <h2 className="text-center text-[32px] font-medium leading-[1.6] text-[#061225] md:text-[24px]">
           追加料金、移行、守秘義務、LINE連携まで
-          <br />
+          <br className="md:hidden" />
           よくある不安に回答します。
         </h2>
       </div>

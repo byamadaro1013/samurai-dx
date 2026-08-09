@@ -47,14 +47,14 @@ const Kv = () => {
         <div className="absolute left-[766px] top-[231px] flex w-[620px] flex-col gap-6 md:static md:w-full">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
-              <h1 className="bg-gradient-to-r from-[#f2f2f2] to-white bg-clip-text text-[56px] font-medium leading-[1.2] text-transparent md:text-[34px]">
+              <h1 className="bg-gradient-to-r from-[#f2f2f2] to-white bg-clip-text text-[56px] font-medium leading-[1.2] text-transparent md:text-[30px]">
                 法律事務所のための
                 <br />
                 Google Chat導入支援
               </h1>
               <p className="text-[18px] font-medium leading-[1.6] text-white md:text-[15px]">
                 Gmailに“すでについている”Google Chatで、
-                <br />
+                <br className="md:hidden" />
                 事務所のチャットを追加コストゼロに。
               </p>
             </div>
@@ -98,6 +98,18 @@ const Kv = () => {
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* Mobile visual */}
+          <div className="hidden md:block">
+            <Image
+              src="/assets/images/google-chat/hero_laptop.png"
+              alt="ノートPCに表示されたGoogle Chat"
+              width={671}
+              height={460}
+              className="h-auto w-full"
+              priority
+            />
           </div>
         </div>
       </div>

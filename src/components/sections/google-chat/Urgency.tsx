@@ -20,13 +20,13 @@ const Urgency = () => {
         </p>
         <div className="flex w-[870px] flex-col gap-2.5 rounded-2xl border border-solid border-[#dce8f6] bg-[#f9fbff] p-5 md:w-full">
           {RISKS.map((risk) => (
-            <div key={risk} className="flex items-center gap-2.5">
+            <div key={risk} className="flex items-center gap-2.5 md:items-start">
               <Image
                 src="/assets/images/google-chat/icons/triangle_alert.svg"
                 alt=""
                 width={18}
                 height={18}
-                className="shrink-0"
+                className="shrink-0 md:mt-1"
               />
               <p className="flex-1 text-[16px] font-medium leading-[1.6] text-[#061225]">
                 {risk}

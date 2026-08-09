@@ -10,7 +10,7 @@ const Pattern = () => {
         </p>
         <h2 className="text-center text-[32px] font-medium leading-[1.6] text-[#061225] md:text-[24px]">
           現状に応じて、
-          <br />
+          <br className="md:hidden" />
           乗り換え型と新規有効化型の2パターンで支援します。
         </h2>
       </div>

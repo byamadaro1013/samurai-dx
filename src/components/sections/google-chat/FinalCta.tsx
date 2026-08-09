@@ -26,7 +26,7 @@ const FinalCta = () => {
     >
       <div className="flex w-[1200px] flex-col rounded-[22px] p-8 drop-shadow-[0px_16px_20px_rgba(0,0,0,0.15)] md:w-full md:p-4">
         <div className="flex flex-col gap-3.5">
-          <h2 className="text-[32px] font-medium leading-[1.6] text-white md:text-[24px]">
+          <h2 className="text-[32px] font-medium leading-[1.6] text-white md:text-[20px]">
             「Slack・Chatworkが高い」
             <br />
             「Gmailだけでチャットがない」

@@ -12,18 +12,18 @@ const Overview = () => {
           </p>
           <h2 className="text-[32px] font-medium leading-[1.5] text-[#061225] md:text-[24px]">
             Google Chatは、
-            <br />
+            <br className="md:hidden" />
             Google Workspace（Gmail）に
-            <br />
+            <br className="md:hidden" />
             標準搭載されているビジネスチャットです。
           </h2>
           <p className="text-[16px] font-medium leading-[1.6] text-[#5b6b82]">
             SlackやChatworkと同じように、メンバーとリアルタイムにメッセージのやり取りができます。Gmailを使っている事務所なら、追加料金なしで今すぐに使い始められます。
           </p>
           <div className="flex flex-col gap-2 rounded-2xl border border-solid border-[#dce8f6] bg-[#f7faff] p-[22px]">
-            <p className="text-[18px] font-medium leading-[1.2] text-[#061225]">
+            <p className="text-[18px] font-medium leading-[1.2] text-[#061225] md:leading-[1.4]">
               「事務所のためのLINE」のようなもの。
-              <br />
+              <br className="md:hidden" />
               しかもGmailに最初からついています。
             </p>
             <p className="text-[16px] font-medium leading-[1.6] text-[#5b6b82]">
