@@ -27,6 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.description || undefined,
     keywords: article.keywords,
     alternates: { canonical: article.href },
+    // 下書きはプレビューでしか出ないが、念のため検索に載せない
+    ...(article.draft && { robots: { index: false, follow: false } }),
     openGraph: {
       type: "article",
       url: article.href,

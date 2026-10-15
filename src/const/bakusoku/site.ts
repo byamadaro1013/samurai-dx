@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/const";
 export const product = {
   name: "バクソク内容証明",
   priceJpy: 9800,
@@ -31,7 +32,7 @@ export function formatJPY(value: number): string {
 }
 
 export function getSiteUrl(): URL {
-  const url = new URL(process.env.SITE_URL ?? "http://localhost:3000");
+  const url = new URL(process.env.SITE_URL ?? SITE_URL);
   if (!["https:", "http:"].includes(url.protocol))
     throw new Error("Invalid SITE_URL protocol");
   return new URL(url.origin);

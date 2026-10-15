@@ -6,8 +6,6 @@ import { getSiteUrl, product, searchKeywords } from "@/const/bakusoku/site";
 import "./globals.css";
 import "./purchase.css";
 
-const indexed = process.env.SITE_INDEXING_ENABLED === "true";
-
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
   title: "バクソク内容証明 | e内容証明の入力を自動化・士業の業務効率化",
@@ -18,11 +16,7 @@ export const metadata: Metadata = {
   publisher: "株式会社SamurAI DX",
   alternates: { canonical: "/bakusokunaiyoushoumei" },
   icons: { icon: "/assets/bakusoku/favicon.svg" },
-  robots: {
-    index: indexed,
-    follow: indexed,
-    googleBot: { index: indexed, follow: indexed, noimageindex: !indexed },
-  },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     locale: "ja_JP",
