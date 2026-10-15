@@ -3,6 +3,16 @@ import type { NextConfig } from "next";
 const bakusokuIndexingEnabled = process.env.SITE_INDEXING_ENABLED === "true";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    // 記事原稿で使われていた綴り(yousyoumei)のURLも正しいページへ送る
+    return [
+      {
+        source: "/bakusokunaiyousyoumei/:path*",
+        destination: "/bakusokunaiyoushoumei/:path*",
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       ...(!bakusokuIndexingEnabled

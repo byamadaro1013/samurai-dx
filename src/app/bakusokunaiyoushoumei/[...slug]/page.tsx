@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/bakusoku/Footer";
 import { Header } from "@/components/bakusoku/Header";
@@ -9,9 +9,9 @@ import {
   getArticle,
   getArticles,
 } from "@/const/bakusoku/articles";
-import "../../articles.css";
+import "../articles.css";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ slug: string[] }> };
 
 export const dynamicParams = false;
 
@@ -22,17 +22,17 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticle((await params).slug);
   if (!article) return {};
-  const url = `/bakusokunaiyoushoumei/articles/${article.slug}`;
   return {
     title: `${article.title} | バクソク内容証明`,
     description: article.description || undefined,
-    alternates: { canonical: url },
+    keywords: article.keywords,
+    alternates: { canonical: article.href },
     openGraph: {
       type: "article",
-      url,
+      url: article.href,
       title: article.title,
       description: article.description || undefined,
-      publishedTime: article.date,
+      publishedTime: article.date ?? undefined,
     },
   };
 }
@@ -48,9 +48,18 @@ export default async function ArticlePage({ params }: Props) {
           <Link className="article-back" href="/bakusokunaiyoushoumei/articles">
             ← 記事一覧
           </Link>
-          <time className="article-date" dateTime={article.date}>
-            {formatArticleDate(article.date)}
-          </time>
+          {article.draft && (
+            <p className="article-draft-banner">
+              下書き（{article.status || "status未設定"}
+              ）：本番には表示されません。公開するときは status
+              を「公開」にしてください。
+            </p>
+          )}
+          {article.date && (
+            <time className="article-date" dateTime={article.date}>
+              {formatArticleDate(article.date)}
+            </time>
+          )}
           <h1 className="article-title">{article.title}</h1>
           <div
             className="article-body"

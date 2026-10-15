@@ -27,14 +27,19 @@ export default function ArticlesPage() {
           ) : (
             <ul className="article-list">
               {articles.map((article) => (
-                <li key={article.slug}>
-                  <Link
-                    href={`/bakusokunaiyoushoumei/articles/${article.slug}`}
-                  >
-                    <time dateTime={article.date}>
-                      {formatArticleDate(article.date)}
-                    </time>
-                    <h2>{article.title}</h2>
+                <li key={article.href}>
+                  <Link href={article.href}>
+                    {article.date && (
+                      <time dateTime={article.date}>
+                        {formatArticleDate(article.date)}
+                      </time>
+                    )}
+                    <h2>
+                      {article.draft && (
+                        <span className="article-draft-tag">下書き</span>
+                      )}
+                      {article.title}
+                    </h2>
                     {article.description && <p>{article.description}</p>}
                   </Link>
                 </li>

@@ -2,72 +2,111 @@ import fs from "node:fs";
 import path from "node:path";
 import { marked } from "marked";
 
-// 記事は src/content/bakusoku/articles/<slug>.md に置く。
-// ファイル名(拡張子なし)がURLになる: /bakusokunaiyoushoumei/articles/<slug>
+// 記事は src/content/bakusoku/articles/*.md に置く。一覧はファイル名順。
+// URLは先頭の設定にある slug で決まる:
+//   slug: /bakusokunaiyoushoumei/error/yohaku → /bakusokunaiyoushoumei/error/yohaku
+// status が「公開」以外の記事は下書き扱いで、本番には出さない
+// (ローカル開発とVercelのプレビューでは表示する)。
 const articlesDir = path.join(process.cwd(), "src/content/bakusoku/articles");
-const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+export const articlesBasePath = "/bakusokunaiyoushoumei";
+const segmentPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const publishedStatus = "公開";
 
 export type ArticleMeta = {
-  slug: string;
+  slug: string[];
+  href: string;
   title: string;
   description: string;
-  date: string;
+  keywords: string[];
+  date: string | null;
+  status: string;
+  draft: boolean;
 };
 
 export type Article = ArticleMeta & { html: string };
 
-type Parsed = { meta: ArticleMeta; draft: boolean; body: string };
+type Parsed = { meta: ArticleMeta; body: string };
 
-function parse(slug: string, source: string): Parsed {
+function showDrafts(): boolean {
+  return (
+    process.env.NODE_ENV !== "production" ||
+    process.env.VERCEL_ENV === "preview"
+  );
+}
+
+function parse(file: string, source: string): Parsed {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!match)
     throw new Error(
-      `${slug}.md: 先頭に --- で囲んだ title などの設定が必要です`
+      `${file}: 先頭に --- で囲んだ slug や title の設定が必要です`
     );
   const fields: Record<string, string> = {};
   for (const line of match[1].split(/\r?\n/)) {
-    const pair = line.match(/^([A-Za-z]+):\s*(.*)$/);
+    const pair = line.match(/^([A-Za-z_]+):\s*(.*)$/);
     if (pair) fields[pair[1]] = pair[2].replace(/^["']|["']$/g, "").trim();
   }
-  if (!fields.title) throw new Error(`${slug}.md: title がありません`);
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(fields.date ?? ""))
-    throw new Error(`${slug}.md: date は YYYY-MM-DD 形式で書いてください`);
+  if (!fields.title) throw new Error(`${file}: title がありません`);
+  const slugPath = (fields.slug ?? "").replace(/\/+$/, "");
+  if (!slugPath.startsWith(`${articlesBasePath}/`))
+    throw new Error(`${file}: slug は ${articlesBasePath}/ で始めてください`);
+  const slug = slugPath.slice(articlesBasePath.length + 1).split("/");
+  if (!slug.every((segment) => segmentPattern.test(segment)))
+    throw new Error(
+      `${file}: slug は半角英小文字・数字・ハイフンにしてください`
+    );
+  if (fields.date && !/^\d{4}-\d{2}-\d{2}$/.test(fields.date))
+    throw new Error(`${file}: date は YYYY-MM-DD 形式で書いてください`);
+  const status = fields.status ?? "";
+  const keywords = [
+    fields.main_keyword,
+    ...(fields.sub_keywords ?? "").split("/"),
+  ]
+    .map((keyword) => keyword?.trim())
+    .filter((keyword): keyword is string => Boolean(keyword));
+  // 本文先頭の「# タイトル」はページ側で表示するので除く。編集メモのHTMLコメントも出さない。
+  const body = match[2]
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/^\s*#\s+[^\n]*\n/, "");
   return {
     meta: {
       slug,
+      href: `${articlesBasePath}/${slug.join("/")}`,
       title: fields.title,
       description: fields.description ?? "",
-      date: fields.date,
+      keywords,
+      date: fields.date || null,
+      status,
+      draft: status !== publishedStatus,
     },
-    draft: fields.draft === "true",
-    body: match[2],
+    body,
   };
 }
 
 function readAll(): Parsed[] {
   if (!fs.existsSync(articlesDir)) return [];
-  const showDrafts = process.env.NODE_ENV !== "production";
-  return fs
+  const articles = fs
     .readdirSync(articlesDir)
     .filter((file) => file.endsWith(".md"))
-    .map((file) => {
-      const slug = file.slice(0, -3);
-      if (!slugPattern.test(slug))
-        throw new Error(
-          `${file}: ファイル名は半角英小文字・数字・ハイフンにしてください`
-        );
-      return parse(slug, fs.readFileSync(path.join(articlesDir, file), "utf8"));
-    })
-    .filter((article) => showDrafts || !article.draft)
-    .sort((a, b) => b.meta.date.localeCompare(a.meta.date));
+    .sort()
+    .map((file) =>
+      parse(file, fs.readFileSync(path.join(articlesDir, file), "utf8"))
+    );
+  const seen = new Set<string>();
+  for (const { meta } of articles) {
+    if (seen.has(meta.href))
+      throw new Error(`slug が重複しています: ${meta.href}`);
+    seen.add(meta.href);
+  }
+  return showDrafts() ? articles : articles.filter(({ meta }) => !meta.draft);
 }
 
 export function getArticles(): ArticleMeta[] {
   return readAll().map((article) => article.meta);
 }
 
-export function getArticle(slug: string): Article | null {
-  const found = readAll().find((article) => article.meta.slug === slug);
+export function getArticle(slug: string[]): Article | null {
+  const href = `${articlesBasePath}/${slug.join("/")}`;
+  const found = readAll().find((article) => article.meta.href === href);
   if (!found) return null;
   return { ...found.meta, html: marked.parse(found.body, { async: false }) };
 }

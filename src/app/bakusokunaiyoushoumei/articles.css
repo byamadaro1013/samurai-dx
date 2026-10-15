@@ -178,3 +178,34 @@
     padding: 24px 20px;
   }
 }
+.article-draft-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #993c29;
+  background: #fbe7dd;
+  border-radius: 4px;
+  padding: 1px 8px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.article-draft-banner {
+  font-size: 13px;
+  color: #993c29;
+  background: #fbe7dd;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+}
+.article-body hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.4em 0;
+}
+.article-body table {
+  display: block;
+  overflow-x: auto;
+}
+.article-body {
+  overflow-wrap: anywhere;
+}
