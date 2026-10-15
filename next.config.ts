@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
       ...(!bakusokuIndexingEnabled
         ? [
             {
-              source: "/bakusokunaiyoushoumei",
+              source: "/bakusokunaiyoushoumei/:path*",
               headers: [
                 {
                   key: "X-Robots-Tag",

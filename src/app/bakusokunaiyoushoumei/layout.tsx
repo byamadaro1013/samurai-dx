@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { IconDefs } from "@/components/bakusoku/IconDefs";
 import { PurchaseProvider } from "@/components/bakusoku/PurchaseProvider";
 import { getSiteUrl, product, searchKeywords } from "@/const/bakusoku/site";
 import "./globals.css";
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <body>
+        <IconDefs />
         <PurchaseProvider>{children}</PurchaseProvider>
       </body>
     </html>

@@ -1,15 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "./Icon";
 import { PurchaseButton } from "./PurchaseProvider";
 
 const links = [
-  ["#features", "できること"],
-  ["#demo", "デモ動画"],
-  ["#how-it-works", "使い方"],
-  ["#pricing", "料金"],
-  ["#faq", "よくある質問"],
+  ["/bakusokunaiyoushoumei#features", "できること"],
+  ["/bakusokunaiyoushoumei#demo", "デモ動画"],
+  ["/bakusokunaiyoushoumei#how-it-works", "使い方"],
+  ["/bakusokunaiyoushoumei#pricing", "料金"],
+  ["/bakusokunaiyoushoumei#faq", "よくある質問"],
+  ["/bakusokunaiyoushoumei/articles", "記事"],
 ] as const;
 
 export function Header() {
@@ -32,7 +34,11 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="#" aria-label="バクソク内容証明 トップ">
+        <Link
+          className="brand"
+          href="/bakusokunaiyoushoumei"
+          aria-label="バクソク内容証明 トップ"
+        >
           <span className="brand-mark" aria-hidden="true">
             <svg viewBox="0 0 32 32">
               <path d="M13 7h11v18H13M13 12h7M13 17h7M5 12h5M3 17h7M6 22h4" />
@@ -41,12 +47,12 @@ export function Header() {
           <span className="brand-word">
             バクソク内容証明<small>BAKUSOKU NAIYO SHOMEI</small>
           </span>
-        </a>
+        </Link>
         <nav className="desktop-nav" aria-label="メインナビゲーション">
           {links.map(([href, label]) => (
-            <a href={href} key={href}>
+            <Link href={href} key={href}>
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
         <PurchaseButton className="button button-small button-red header-cta">
@@ -70,9 +76,9 @@ export function Header() {
         hidden={!expanded}
       >
         {links.map(([href, label]) => (
-          <a href={href} key={href} onClick={() => setExpanded(false)}>
+          <Link href={href} key={href} onClick={() => setExpanded(false)}>
             {label}
-          </a>
+          </Link>
         ))}
         <PurchaseButton
           className="purchase-nav-button"
