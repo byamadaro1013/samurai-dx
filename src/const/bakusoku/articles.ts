@@ -19,6 +19,8 @@ export type ArticleMeta = {
   description: string;
   keywords: string[];
   date: string | null;
+  // 本文の「最終確認日:YYYY年M月D日」。構造化データの更新日に使う
+  checkedDate: string | null;
   status: string;
   draft: boolean;
 };
@@ -64,6 +66,12 @@ function parse(file: string, source: string): Parsed {
     .map((keyword) => keyword?.trim())
     .filter((keyword): keyword is string => Boolean(keyword));
   // 本文先頭の「# タイトル」はページ側で表示するので除く。編集メモのHTMLコメントも出さない。
+  const checked = match[2].match(
+    /最終確認日[:：]\s*(\d{4})年(\d{1,2})月(\d{1,2})日/
+  );
+  const checkedDate = checked
+    ? `${checked[1]}-${checked[2].padStart(2, "0")}-${checked[3].padStart(2, "0")}`
+    : null;
   const body = match[2]
     .replace(/<!--[\s\S]*?-->/g, "")
     .replace(/^\s*#\s+[^\n]*\n/, "");
@@ -75,6 +83,7 @@ function parse(file: string, source: string): Parsed {
       description: fields.description ?? "",
       keywords,
       date: fields.date || null,
+      checkedDate,
       status,
       draft: status !== publishedStatus,
     },

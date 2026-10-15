@@ -3,12 +3,22 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/bakusoku/Footer";
 import { Header } from "@/components/bakusoku/Header";
+import { JsonLd } from "@/components/bakusoku/JsonLd";
 import { PurchaseButton } from "@/components/bakusoku/PurchaseProvider";
 import {
+  type Article,
+  articlesBasePath,
   formatArticleDate,
   getArticle,
   getArticles,
 } from "@/const/bakusoku/articles";
+import {
+  absoluteUrl,
+  ogImage,
+  openGraphBase,
+  product,
+  publisherJsonLd,
+} from "@/const/bakusoku/site";
 import "../articles.css";
 
 type Props = { params: Promise<{ slug: string[] }> };
@@ -30,12 +40,61 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // 下書きはプレビューでしか出ないが、念のため検索に載せない
     ...(article.draft && { robots: { index: false, follow: false } }),
     openGraph: {
+      ...openGraphBase,
       type: "article",
       url: article.href,
       title: article.title,
       description: article.description || undefined,
       publishedTime: article.date ?? undefined,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description || undefined,
+      images: [ogImage.url],
+    },
+  };
+}
+
+// パンくず: 製品トップ → (親の記事があれば親) → この記事
+function breadcrumbJsonLd(article: Article) {
+  const byHref = new Map(getArticles().map((a) => [a.href, a.title]));
+  const items: { name: string; href: string }[] = [
+    { name: product.name, href: articlesBasePath },
+  ];
+  for (let i = 1; i < article.slug.length; i++) {
+    const href = `${articlesBasePath}/${article.slug.slice(0, i).join("/")}`;
+    const title = byHref.get(href);
+    if (title) items.push({ name: title, href });
+  }
+  items.push({ name: article.title, href: article.href });
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.href),
+    })),
+  };
+}
+
+function articleJsonLd(article: Article) {
+  const published = article.date ?? article.checkedDate;
+  const modified = article.checkedDate ?? article.date;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description || undefined,
+    image: [absoluteUrl(ogImage.url)],
+    mainEntityOfPage: absoluteUrl(article.href),
+    ...(published && { datePublished: published }),
+    ...(modified && { dateModified: modified }),
+    author: publisherJsonLd,
+    publisher: publisherJsonLd,
+    inLanguage: "ja",
   };
 }
 
@@ -44,6 +103,8 @@ export default async function ArticlePage({ params }: Props) {
   if (!article) notFound();
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd(article)} />
+      <JsonLd data={articleJsonLd(article)} />
       <Header />
       <main id="main" className="article-shell">
         <article className="article-container container">

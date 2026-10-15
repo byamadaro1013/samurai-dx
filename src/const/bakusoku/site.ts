@@ -37,3 +37,28 @@ export function getSiteUrl(): URL {
     throw new Error("Invalid SITE_URL protocol");
   return new URL(url.origin);
 }
+
+export const publisherName = "株式会社SamurAI DX";
+export const ogImage = {
+  url: "/assets/bakusoku/app-screen.png",
+  width: 1200,
+  height: 726,
+  alt: "バクソク内容証明のアプリ画面",
+};
+
+// 子ページで openGraph を指定すると親の設定は丸ごと置き換わるので、共通部分をここから渡す
+export const openGraphBase = {
+  siteName: product.name,
+  locale: "ja_JP",
+  images: [ogImage],
+};
+
+export function absoluteUrl(pathname: string): string {
+  return new URL(pathname, getSiteUrl()).toString();
+}
+
+export const publisherJsonLd = {
+  "@type": "Organization",
+  name: publisherName,
+  url: SITE_URL,
+};

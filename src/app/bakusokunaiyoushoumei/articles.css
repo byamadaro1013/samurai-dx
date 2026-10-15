@@ -209,3 +209,71 @@
 .article-body {
   overflow-wrap: anywhere;
 }
+
+/* LPのヒーロー: 小見出しも h1 に含めつつ、見た目は元のまま */
+.hero h1.hero-title {
+  margin-top: 0;
+}
+.hero-title .eyebrow {
+  margin-bottom: 23px;
+}
+.hero-catch {
+  display: block;
+}
+
+/* LPの「e内容証明のエラーと直し方」欄 */
+.guides-section {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+  border-top: 1px solid var(--line);
+}
+.guides-heading h2 {
+  font-size: 32px;
+}
+.guides-hub {
+  margin-top: 30px;
+}
+.guides-list {
+  border-top: 1px solid var(--line);
+}
+.guides-list li {
+  border-bottom: 1px solid var(--line);
+}
+.guides-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+.guides-list a::after {
+  content: "→";
+  color: var(--red);
+  flex-shrink: 0;
+}
+.guides-list a:hover {
+  color: var(--red);
+}
+@media (max-width: 760px) {
+  .guides-section {
+    display: block;
+  }
+  .guides-heading h2 {
+    font-size: 28px;
+  }
+  .guides-hub {
+    margin-top: 22px;
+    font-size: 13px;
+  }
+  .guides-list {
+    margin-top: 32px;
+  }
+  .guides-list a {
+    font-size: 13px;
+    padding: 16px 0;
+  }
+}

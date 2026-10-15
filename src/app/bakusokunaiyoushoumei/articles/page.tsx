@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/bakusoku/Footer";
 import { Header } from "@/components/bakusoku/Header";
 import { formatArticleDate, getArticles } from "@/const/bakusoku/articles";
+import { openGraphBase } from "@/const/bakusoku/site";
 import "../articles.css";
 
 export const metadata: Metadata = {
@@ -10,7 +11,12 @@ export const metadata: Metadata = {
   description:
     "e内容証明の入力や内容証明の業務効率化について、バクソク内容証明がお届けする記事の一覧です。",
   alternates: { canonical: "/bakusokunaiyoushoumei/articles" },
-  openGraph: { url: "/bakusokunaiyoushoumei/articles" },
+  openGraph: {
+    ...openGraphBase,
+    type: "website",
+    url: "/bakusokunaiyoushoumei/articles",
+    title: "記事一覧 | バクソク内容証明",
+  },
 };
 
 export default function ArticlesPage() {
