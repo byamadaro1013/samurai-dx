@@ -8,9 +8,8 @@ export const product = {
   contactEmail: "hashimoto@samurai-dx.com",
 } as const;
 
-// Intentionally false. The payment/download implementation is a separate phase.
-// Do not turn this on until docs/requirements.md acceptance criteria are satisfied.
-export const CHECKOUT_IMPLEMENTED: boolean = false;
+// Stripeの環境変数が未設定なら購入APIが503を返し、モーダルにエラーを出す
+export const CHECKOUT_IMPLEMENTED: boolean = true;
 
 export const searchKeywords = [
   "バクソク内容証明",
