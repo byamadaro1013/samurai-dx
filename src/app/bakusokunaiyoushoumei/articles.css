@@ -1,0 +1,285 @@
+.article-shell {
+  padding: 72px 0 96px;
+}
+.article-container {
+  max-width: 760px;
+}
+.article-list-title {
+  font-size: 32px;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+}
+.article-empty {
+  margin-top: 32px;
+  color: var(--muted);
+}
+.article-list {
+  margin-top: 36px;
+  border-top: 1px solid var(--line);
+}
+.article-list li {
+  border-bottom: 1px solid var(--line);
+}
+.article-list a {
+  display: block;
+  padding: 28px 0;
+}
+.article-list a:hover h2 {
+  color: var(--red);
+}
+.article-list time,
+.article-date {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.article-list h2 {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-top: 6px;
+  transition: color 0.2s;
+}
+.article-list p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.article-back {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.article-back:hover {
+  color: var(--red);
+}
+.article-title {
+  font-size: 32px;
+  line-height: 1.55;
+  letter-spacing: -0.03em;
+  margin: 8px 0 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.article-body {
+  font-size: 16px;
+  line-height: 2;
+}
+.article-body > * + * {
+  margin-top: 1.4em;
+}
+.article-body h2 {
+  font-size: 23px;
+  line-height: 1.6;
+  margin-top: 2.4em;
+  padding-left: 14px;
+  border-left: 4px solid var(--red);
+}
+.article-body h3 {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 2em;
+}
+.article-body ul,
+.article-body ol {
+  padding-left: 1.5em;
+}
+.article-body ul {
+  list-style: disc;
+}
+.article-body ol {
+  list-style: decimal;
+}
+.article-body li + li {
+  margin-top: 0.4em;
+}
+.article-body a {
+  color: var(--red-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-body strong {
+  font-weight: 700;
+  background: linear-gradient(transparent 62%, #ffd4c9 62%);
+}
+.article-body blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 14px 20px;
+  background: var(--soft);
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+}
+.article-body img {
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.article-body th,
+.article-body td {
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  text-align: left;
+}
+.article-body th {
+  background: var(--soft);
+}
+.article-body code {
+  background: var(--soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.article-cta {
+  margin-top: 64px;
+  padding: 32px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--red);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.article-cta p {
+  font-size: 18px;
+  font-weight: 700;
+}
+.article-cta > a {
+  font-size: 12px;
+  color: var(--muted);
+  border-bottom: 1px solid #a7b2a3;
+}
+@media (max-width: 760px) {
+  .article-shell {
+    padding: 44px 0 64px;
+  }
+  .article-list-title,
+  .article-title {
+    font-size: 25px;
+  }
+  .article-list h2 {
+    font-size: 17px;
+  }
+  .article-body {
+    font-size: 15px;
+  }
+  .article-body h2 {
+    font-size: 20px;
+  }
+  .article-cta {
+    padding: 24px 20px;
+  }
+}
+.article-draft-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #993c29;
+  background: #fbe7dd;
+  border-radius: 4px;
+  padding: 1px 8px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.article-draft-banner {
+  font-size: 13px;
+  color: #993c29;
+  background: #fbe7dd;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+}
+.article-body hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.4em 0;
+}
+.article-body table {
+  display: block;
+  overflow-x: auto;
+}
+.article-body {
+  overflow-wrap: anywhere;
+}
+
+/* LPのヒーロー: 小見出しも h1 に含めつつ、見た目は元のまま */
+.hero h1.hero-title {
+  margin-top: 0;
+}
+.hero-title .eyebrow {
+  margin-bottom: 23px;
+}
+.hero-catch {
+  display: block;
+}
+
+/* LPの「e内容証明のエラーと直し方」欄 */
+.guides-section {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+  border-top: 1px solid var(--line);
+}
+.guides-heading h2 {
+  font-size: 32px;
+}
+.guides-hub {
+  margin-top: 30px;
+}
+.guides-list {
+  border-top: 1px solid var(--line);
+}
+.guides-list li {
+  border-bottom: 1px solid var(--line);
+}
+.guides-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+.guides-list a::after {
+  content: "→";
+  color: var(--red);
+  flex-shrink: 0;
+}
+.guides-list a:hover {
+  color: var(--red);
+}
+@media (max-width: 760px) {
+  .guides-section {
+    display: block;
+  }
+  .guides-heading h2 {
+    font-size: 28px;
+  }
+  .guides-hub {
+    margin-top: 22px;
+    font-size: 13px;
+  }
+  .guides-list {
+    margin-top: 32px;
+  }
+  .guides-list a {
+    font-size: 13px;
+    padding: 16px 0;
+  }
+}
+
+.article-body img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
