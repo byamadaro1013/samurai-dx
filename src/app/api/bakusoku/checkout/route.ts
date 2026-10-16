@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { checkoutInputSchema } from "@/const/bakusoku/checkout-input";
-import { getSiteUrl, product } from "@/const/bakusoku/site";
-import { getStripe, PRODUCT_KEY } from "@/lib/bakusoku/stripe";
+import { product } from "@/const/bakusoku/site";
+import { getAppOrigin, getStripe, PRODUCT_KEY } from "@/lib/bakusoku/stripe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
   const { officeName, customerName, email } = input.data;
 
   const requestKey = request.headers.get("idempotency-key");
-  const site = getSiteUrl();
+  const appOrigin = getAppOrigin();
   const priceId = process.env.STRIPE_PRICE_ID;
   const metadata = { product: PRODUCT_KEY, officeName, customerName };
 
@@ -70,8 +70,8 @@ export async function POST(request: NextRequest) {
         payment_intent_data: { metadata },
         locale: "ja",
         submit_type: "pay",
-        success_url: `${site.origin}/bakusokunaiyoushoumei/thanks?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${site.origin}/bakusokunaiyoushoumei`,
+        success_url: `${appOrigin}/bakusokunaiyoushoumei/thanks?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${appOrigin}/bakusokunaiyoushoumei`,
       },
       requestKey && UUID_PATTERN.test(requestKey)
         ? { idempotencyKey: `bakusoku-checkout/${requestKey}` }

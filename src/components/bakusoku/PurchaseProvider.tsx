@@ -21,6 +21,7 @@ import {
 } from "@/const/bakusoku/site";
 import { Icon } from "./Icon";
 
+const PURCHASE_HASH = "#purchase";
 const PurchaseContext = createContext<(() => void) | null>(null);
 type FieldErrors = Partial<Record<keyof CheckoutInput, string>>;
 
@@ -60,6 +61,28 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (open && stage === "review") heading.current?.focus();
   }, [open, stage]);
+
+  // 記事本文の「#purchase」リンク(例: バクソクで5分で送る)でもモーダルを開く。
+  // JSが無い環境ではLPへ遷移し、LP側でハッシュを見て開く。
+  useEffect(() => {
+    if (window.location.hash === PURCHASE_HASH) {
+      history.replaceState(null, "", location.pathname + location.search);
+      setOpen(true);
+    }
+    function onClick(event: MouseEvent) {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+        return;
+      const link = (event.target as Element | null)?.closest?.("a[href]");
+      if (!(link instanceof HTMLAnchorElement)) return;
+      if (link.hash !== PURCHASE_HASH || link.origin !== location.origin)
+        return;
+      event.preventDefault();
+      setOpen(true);
+    }
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
 
   function resetAndClose() {
     setOpen(false);

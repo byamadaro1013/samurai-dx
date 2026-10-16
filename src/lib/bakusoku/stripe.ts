@@ -82,9 +82,20 @@ export function getFileUrl(platform: Platform): URL | null {
   }
 }
 
+/**
+ * 決済後の戻り先・メールのリンクに使うオリジン。
+ * Vercelのプレビューでは本番ドメインではなくそのブランチのURLへ戻す(テスト決済用)。
+ */
+export function getAppOrigin(): string {
+  const branchUrl = process.env.VERCEL_BRANCH_URL;
+  if (process.env.VERCEL_ENV === "preview" && branchUrl)
+    return `https://${branchUrl}`;
+  return getSiteUrl().origin;
+}
+
 /** 購入者に見せるダウンロードリンク。開くたびにサーバーで決済状態を確認する */
 export function getDownloadLink(platform: Platform, sessionId: string): string {
-  const url = new URL(`/api/bakusoku/download/${platform}`, getSiteUrl());
+  const url = new URL(`/api/bakusoku/download/${platform}`, getAppOrigin());
   url.searchParams.set("session_id", sessionId);
   return url.href;
 }
