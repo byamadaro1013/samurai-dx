@@ -135,6 +135,16 @@
   border-radius: 4px;
   font-size: 0.9em;
 }
+.article-about {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+.article-about a {
+  border-bottom: 1px solid #a7b2a3;
+}
 .article-cta {
   margin-top: 64px;
   padding: 32px;

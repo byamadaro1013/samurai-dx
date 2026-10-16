@@ -36,7 +36,15 @@ export type ArticleMeta = {
   draft: boolean;
 };
 
-export type Article = ArticleMeta & { html: string };
+export type ArticleFaq = { question: string; answer: string };
+
+export type Article = ArticleMeta & {
+  html: string;
+  // 本文に「監修:」の行があるか。構造化データの reviewedBy に使う
+  reviewed: boolean;
+  // 「## よくある質問」の **Q. …** と A. … の組。FAQPage の構造化データに使う
+  faqs: ArticleFaq[];
+};
 
 type Parsed = { meta: ArticleMeta; body: string };
 
@@ -128,7 +136,36 @@ export function getArticle(slug: string[]): Article | null {
   const href = `${articlesBasePath}/${slug.join("/")}`;
   const found = readAll().find((article) => article.meta.href === href);
   if (!found) return null;
-  return { ...found.meta, html: marked.parse(found.body, { async: false }) };
+  return {
+    ...found.meta,
+    html: marked.parse(found.body, { async: false }),
+    reviewed: /^監修[:：]/m.test(found.body),
+    faqs: extractFaqs(found.body),
+  };
+}
+
+// 構造化データ用の素の文。リンクは文字だけ残し、強調と【推測】などの編集用の注記は外す
+function plainText(markdown: string): string {
+  return markdown
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*/g, "")
+    .replace(/【[^】]*】/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function extractFaqs(body: string): ArticleFaq[] {
+  const section = body.match(
+    /^##\s+よくある質問\s*$([\s\S]*?)(?=^##\s|(?![\s\S]))/m
+  );
+  if (!section) return [];
+  const faqs: ArticleFaq[] = [];
+  const pattern =
+    /^\*\*Q\.\s*(.+?)\*\*\s*\r?\nA\.\s*([\s\S]*?)(?=\r?\n\s*\r?\n|(?![\s\S]))/gm;
+  for (const [, question, answer] of section[1].matchAll(pattern)) {
+    faqs.push({ question: plainText(question), answer: plainText(answer) });
+  }
+  return faqs;
 }
 
 export function formatArticleDate(date: string): string {

@@ -37,18 +37,65 @@ const softwareJsonLd = {
   publisher: publisherJsonLd,
 };
 
+const faqs = [
+  {
+    question: "どのパソコンで使えますか？",
+    answer:
+      "Windows（64bit）とmacOSに対応するデスクトップアプリです。購入・インストール前に、noteの案内と利用規約をご確認ください。",
+  },
+  {
+    question: "決済や差出しも、自動で行われますか？",
+    answer:
+      "自動化は入力作業までです。文書の全ページ、宛先、料金は公式画面でご確認いただき、料金の確定・差出し・決済は利用者ご自身で行います。",
+  },
+  {
+    question: "文書を生成AIへ送信しますか？",
+    answer:
+      "生成AI APIは使用していません。文書の読み込みと規定チェックはPC内で行い、AIベンダーのサーバーへ文書を送信しない設計です。",
+  },
+  {
+    question: "事務所内の複数人で使えますか？",
+    answer:
+      "同一事務所内であれば、人数・台数を問わず利用できます。事務所外への配布、転売、再頒布は禁止されています。",
+  },
+  {
+    question: "購入後のダウンロード・更新方法は？",
+    answer:
+      "購入後の専用ページからWindows版・Mac版をダウンロードする流れです。最新版の取得方法は購入時の案内をご確認ください。アップデートは無償です。",
+  },
+  {
+    question: "日本郵便の公式アプリですか？",
+    answer:
+      "株式会社SamurAI DXが提供する入力支援アプリです。日本郵便株式会社およびe内容証明サービスとの提携・協力関係はありません。公式画面の仕様変更により、入力支援が正常に動作しなくなる場合があります。",
+  },
+];
+
+// FAQPage の内容は画面のFAQと同じ配列から作る(本文と一致させるため)
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+
 const errorHubHref = `${articlesBasePath}/error`;
+// 送り方の比較はエラー解説ではないので、トラブル解決の一覧には出さない
+const nonGuideHrefs = [errorHubHref, `${articlesBasePath}/okurikata`];
 
 export default function HomePage() {
   const articles = getArticles();
   const errorHub = articles.find((article) => article.href === errorHubHref);
   // エラー一覧以外の記事(エラー別の解説と、使えない文字の一覧)
   const errorGuides = articles.filter(
-    (article) => article.href !== errorHubHref
+    (article) => !nonGuideHrefs.includes(article.href)
   );
   return (
     <MediaProvider>
       <JsonLd data={softwareJsonLd} />
+      <JsonLd data={faqJsonLd} />
       <a className="skip-link" href="#main">
         本文へスキップ
       </a>
@@ -688,62 +735,15 @@ export default function HomePage() {
             </a>
           </div>
           <div className="faq-list">
-            <details open>
-              <summary>
-                どのパソコンで使えますか？
-                <span className="faq-plus" aria-hidden="true" />
-              </summary>
-              <p>
-                Windows（64bit）とmacOSに対応するデスクトップアプリです。購入・インストール前に、noteの案内と利用規約をご確認ください。
-              </p>
-            </details>
-            <details>
-              <summary>
-                決済や差出しも、自動で行われますか？
-                <span className="faq-plus" aria-hidden="true" />
-              </summary>
-              <p>
-                自動化は入力作業までです。文書の全ページ、宛先、料金は公式画面でご確認いただき、料金の確定・差出し・決済は利用者ご自身で行います。
-              </p>
-            </details>
-            <details>
-              <summary>
-                文書を生成AIへ送信しますか？
-                <span className="faq-plus" aria-hidden="true" />
-              </summary>
-              <p>
-                生成AI
-                APIは使用していません。文書の読み込みと規定チェックはPC内で行い、AIベンダーのサーバーへ文書を送信しない設計です。
-              </p>
-            </details>
-            <details>
-              <summary>
-                事務所内の複数人で使えますか？
-                <span className="faq-plus" aria-hidden="true" />
-              </summary>
-              <p>
-                同一事務所内であれば、人数・台数を問わず利用できます。事務所外への配布、転売、再頒布は禁止されています。
-              </p>
-            </details>
-            <details>
-              <summary>
-                購入後のダウンロード・更新方法は？
-                <span className="faq-plus" aria-hidden="true" />
-              </summary>
-              <p>
-                購入後の専用ページからWindows版・Mac版をダウンロードする流れです。最新版の取得方法は購入時の案内をご確認ください。アップデートは無償です。
-              </p>
-            </details>
-            <details>
-              <summary>
-                日本郵便の公式アプリですか？
-                <span className="faq-plus" aria-hidden="true" />
-              </summary>
-              <p>
-                株式会社SamurAI
-                DXが提供する入力支援アプリです。日本郵便株式会社およびe内容証明サービスとの提携・協力関係はありません。公式画面の仕様変更により、入力支援が正常に動作しなくなる場合があります。
-              </p>
-            </details>
+            {faqs.map((faq, index) => (
+              <details key={faq.question} open={index === 0}>
+                <summary>
+                  {faq.question}
+                  <span className="faq-plus" aria-hidden="true" />
+                </summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </section>
         <section className="closing-section">
