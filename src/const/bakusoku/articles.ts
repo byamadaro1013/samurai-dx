@@ -12,6 +12,17 @@ export const articlesBasePath = "/bakusokunaiyoushoumei";
 const segmentPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const publishedStatus = "公開";
 
+// 記事内の画像は本文の下の方にあることが多いので遅延読み込みにする
+const escapeAttr = (value: string) =>
+  value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+marked.use({
+  renderer: {
+    image({ href, text }) {
+      return `<img src="${escapeAttr(href)}" alt="${escapeAttr(text)}" loading="lazy" decoding="async" />`;
+    },
+  },
+});
+
 export type ArticleMeta = {
   slug: string[];
   href: string;
