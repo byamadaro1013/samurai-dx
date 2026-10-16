@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { companyHref, supervisorHref } from "@/const/bakusoku/site";
 export function Footer() {
   return (
     <footer className="site-footer">
@@ -19,13 +20,8 @@ export function Footer() {
             </span>
           </Link>
           <div className="footer-links">
-            <a
-              href="https://www.samuraidx.co.jp/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              運営会社 ↗
-            </a>
+            <Link href={companyHref}>運営会社</Link>
+            <Link href={supervisorHref}>監修者</Link>
             <a
               href="https://slow-noise-ba5.notion.site/3df42d401011808bbc90cafe002fde87"
               target="_blank"

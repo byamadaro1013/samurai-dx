@@ -14,10 +14,14 @@ import {
 } from "@/const/bakusoku/articles";
 import {
   absoluteUrl,
+  companyHref,
   ogImage,
   openGraphBase,
   product,
   publisherJsonLd,
+  supervisor,
+  supervisorHref,
+  supervisorJsonLd,
 } from "@/const/bakusoku/site";
 import "../articles.css";
 
@@ -94,7 +98,20 @@ function articleJsonLd(article: Article) {
     ...(modified && { dateModified: modified }),
     author: publisherJsonLd,
     publisher: publisherJsonLd,
+    ...(article.reviewed && { reviewedBy: supervisorJsonLd() }),
     inLanguage: "ja",
+  };
+}
+
+function faqJsonLd(article: Article) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: article.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
   };
 }
 
@@ -105,6 +122,7 @@ export default async function ArticlePage({ params }: Props) {
     <>
       <JsonLd data={breadcrumbJsonLd(article)} />
       <JsonLd data={articleJsonLd(article)} />
+      {article.faqs.length > 0 && <JsonLd data={faqJsonLd(article)} />}
       <Header />
       <main id="main" className="article-shell">
         <article className="article-container container">
@@ -128,6 +146,20 @@ export default async function ArticlePage({ params }: Props) {
             className="article-body"
             dangerouslySetInnerHTML={{ __html: article.html }}
           />
+          <aside className="article-about" aria-label="この記事について">
+            <p>
+              運営：<Link href={companyHref}>{publisherJsonLd.name}</Link>
+              {article.reviewed && (
+                <>
+                  {" "}
+                  / 監修：
+                  <Link href={supervisorHref}>
+                    {supervisor.name} {supervisor.jobTitle}
+                  </Link>
+                </>
+              )}
+            </p>
+          </aside>
           <aside className="article-cta">
             <p>e内容証明の入力を、バクソクに。</p>
             <PurchaseButton className="button button-red">
