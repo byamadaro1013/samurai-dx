@@ -6,11 +6,49 @@ import {
   MediaProvider,
   VideoButton,
 } from "@/components/bakusoku/MediaProvider";
-import { formatJPY, product } from "@/const/bakusoku/site";
+import Link from "next/link";
+import { Icon } from "@/components/bakusoku/Icon";
+import { JsonLd } from "@/components/bakusoku/JsonLd";
+import { articlesBasePath, getArticles } from "@/const/bakusoku/articles";
+import {
+  absoluteUrl,
+  formatJPY,
+  ogImage,
+  product,
+  publisherJsonLd,
+} from "@/const/bakusoku/site";
+import "./articles.css";
+
+const softwareJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: product.name,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Windows, macOS",
+  description:
+    "e内容証明の繰り返し入力と画面遷移を自動化する入力支援アプリ。差出人・宛先管理、Word文書の規定チェックに対応。",
+  url: absoluteUrl(articlesBasePath),
+  image: absoluteUrl(ogImage.url),
+  offers: {
+    "@type": "Offer",
+    price: product.priceJpy,
+    priceCurrency: product.currency,
+  },
+  publisher: publisherJsonLd,
+};
+
+const errorHubHref = `${articlesBasePath}/error`;
 
 export default function HomePage() {
+  const articles = getArticles();
+  const errorHub = articles.find((article) => article.href === errorHubHref);
+  // エラー一覧以外の記事(エラー別の解説と、使えない文字の一覧)
+  const errorGuides = articles.filter(
+    (article) => article.href !== errorHubHref
+  );
   return (
     <MediaProvider>
+      <JsonLd data={softwareJsonLd} />
       <a className="skip-link" href="#main">
         本文へスキップ
       </a>
@@ -19,13 +57,16 @@ export default function HomePage() {
         <section className="hero">
           <div className="hero-inner container">
             <div className="hero-copy">
-              <p className="eyebrow">
-                <span className="live-dot" /> e内容証明 入力支援アプリ
-              </p>
-              <h1>
-                その入力、
-                <br />
-                <span className="text-red">バクソクに。</span>
+              <h1 className="hero-title">
+                <span className="eyebrow">
+                  <span className="live-dot" />{" "}
+                  {"e内容証明 入力支援アプリ「バクソク内容証明」"}
+                </span>
+                <span className="hero-catch">
+                  その入力、
+                  <br />
+                  <span className="text-red">バクソクに。</span>
+                </span>
               </h1>
               <p className="hero-description">
                 書面に向き合う時間を、取り戻す。
@@ -143,7 +184,9 @@ export default function HomePage() {
             <h2>
               考える仕事の前に、
               <br />
-              入力で疲れていませんか。
+              e内容証明の入力で
+              <br />
+              疲れていませんか。
             </h2>
             <p className="section-description">
               一つひとつは小さな作業。
@@ -192,7 +235,7 @@ export default function HomePage() {
                   LESS INPUT. MORE FOCUS.
                 </p>
                 <h2>
-                  いつもの手間を、
+                  e内容証明の、いつもの手間を
                   <br />
                   ひとまとめに。
                 </h2>
@@ -595,6 +638,40 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        {errorGuides.length > 0 && (
+          <section
+            className="guides-section section container"
+            id="guides"
+            aria-labelledby="guides-heading"
+          >
+            <div className="guides-heading">
+              <p className="eyebrow section-eyebrow">TROUBLESHOOTING</p>
+              <h2 id="guides-heading">
+                e内容証明のエラーと
+                <br />
+                直し方
+              </h2>
+              <p className="section-description">
+                アップロードで止まったときは、画面に出たエラー文から原因と直し方を探せます。
+              </p>
+              {errorHub && (
+                <Link
+                  className="button button-red guides-hub"
+                  href={errorHub.href}
+                >
+                  エラー一覧を見る <Icon name="arrow" />
+                </Link>
+              )}
+            </div>
+            <ul className="guides-list">
+              {errorGuides.map((article) => (
+                <li key={article.href}>
+                  <Link href={article.href}>{article.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
         <section className="faq-section section container" id="faq">
           <div className="faq-heading">
             <p className="eyebrow section-eyebrow">FAQ</p>
