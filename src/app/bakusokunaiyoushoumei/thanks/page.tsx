@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/bakusoku/Footer";
 import { Header } from "@/components/bakusoku/Header";
+import { MetaPurchase } from "@/components/bakusoku/MetaPixel";
 import { product } from "@/const/bakusoku/site";
 import {
   getDownloadLink,
@@ -32,6 +33,7 @@ export default async function ThanksPage({ searchParams }: Props) {
         <div className="thanks-card container">
           {order ? (
             <>
+              <MetaPurchase orderId={order.sessionId} />
               <p className="thanks-eyebrow">決済完了</p>
               <h1>ご購入ありがとうございます</h1>
               <p>
