@@ -19,6 +19,7 @@ import {
   formatJPY,
   product,
 } from "@/const/bakusoku/site";
+import { trackMetaEvent } from "@/lib/bakusoku/meta-pixel";
 import { Icon } from "./Icon";
 
 const PURCHASE_HASH = "#purchase";
@@ -151,6 +152,12 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
       const target = new URL(data.checkoutUrl);
       if (target.origin !== "https://checkout.stripe.com")
         throw new Error("Invalid checkout origin");
+      // 決済画面へ進んだ人数を補助指標としてMetaに送る(購入件数が少ない間の判断材料)
+      trackMetaEvent("InitiateCheckout", {
+        value: product.priceJpy,
+        currency: product.currency,
+        content_name: product.name,
+      });
       window.location.assign(target.href);
     } catch {
       setMessage(
