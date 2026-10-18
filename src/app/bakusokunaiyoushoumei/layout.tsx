@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: "/bakusokunaiyoushoumei",
     siteName: product.name,
-    title: "バクソク内容証明 | その入力、バクソクに。",
+    title: "バクソク内容証明 | e内容証明を爆速送付",
     description:
-      "書面に向き合う時間を、取り戻す。e内容証明の入力支援アプリ。Windows・macOS対応。",
+      "e内容証明の入力作業と画面遷移を自動化する入力支援アプリ。Windows・macOS対応。",
     images: [
       {
         url: "/assets/bakusoku/app-screen.png",

@@ -586,27 +586,31 @@ h3 {
   font-size: 19px;
   line-height: 1;
 }
-.audience-strip {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+.audience-box {
+  margin-top: 32px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
   background: #f0eee7;
 }
-.audience-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 23px;
-  padding-bottom: 23px;
-  gap: 20px;
+.audience-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.06em;
 }
-.audience-inner p {
-  font-size: 11px;
+.audience-lead {
+  margin-top: 6px;
+  font-size: 13px;
   color: var(--muted);
 }
-.audience-inner > div {
+.audience-tags {
   display: flex;
-  gap: 48px;
-  font-size: 13px;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -1606,13 +1610,6 @@ h3 {
   .scroll-link {
     display: none;
   }
-  .audience-inner > div {
-    gap: 24px;
-    font-size: 12px;
-  }
-  .audience-inner p {
-    font-size: 10px;
-  }
   .section {
     padding: 82px 0;
   }
@@ -1969,20 +1966,13 @@ h3 {
     width: 12px;
     height: 12px;
   }
-  .audience-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    padding-top: 21px;
-    padding-bottom: 23px;
+  .audience-box {
+    margin-top: 24px;
+    padding: 16px;
   }
-  .audience-inner p {
-    font-size: 10px;
-  }
-  .audience-inner > div {
-    font-size: 12px;
-    gap: 22px;
-    flex-wrap: wrap;
+  .audience-tags {
+    gap: 6px 18px;
+    font-size: 13px;
   }
   .section {
     padding: 66px 0;
@@ -2494,10 +2484,6 @@ h3 {
   }
   .hero-support .support-price {
     padding-left: 10px;
-    font-size: 11px;
-  }
-  .audience-inner > div {
-    gap: 16px;
     font-size: 11px;
   }
   .feature-card {
