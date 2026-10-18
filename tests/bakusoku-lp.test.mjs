@@ -1,4 +1,4 @@
-// バクソク内容証明LPの修正指示書(コピー修正・セクション統合)が反映されているかを、
+// バクソク内容証明LPの修正指示書(コピー修正・セクション統合)とロゴ差し替えが反映されているかを、
 // `next build` が書き出した静的HTMLで確かめる。実行: npm run build && npm test
 import assert from "node:assert/strict";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
@@ -220,5 +220,88 @@ describe("LP内の記事", () => {
       if (page.includes("料金は11,800円(税込)")) withPrice++;
     }
     assert.equal(withPrice, 12);
+  });
+});
+
+describe("ロゴとサイトアイコン", () => {
+  const assetDir = join(
+    import.meta.dirname,
+    "..",
+    "public",
+    "assets",
+    "bakusoku"
+  );
+  // PNGのIHDRから幅・高さ・カラータイプ(6 = RGBA)を読む
+  const png = (name) => {
+    const buf = readFileSync(join(assetDir, name));
+    return {
+      width: buf.readUInt32BE(16),
+      height: buf.readUInt32BE(20),
+      colorType: buf[25],
+    };
+  };
+  const articleHtml = readFileSync(
+    join(appDir, "bakusokunaiyoushoumei", "error.html"),
+    "utf8"
+  );
+
+  test("ヘッダーとフッターは文字つきロゴ画像を使う(LP・記事ページとも)", () => {
+    for (const page of [html, articleHtml]) {
+      for (const area of ["site-header", "site-footer"]) {
+        const el = page.match(
+          new RegExp(`<(header|footer) class="${area}"[\\s\\S]*?</\\1>`)
+        )[0];
+        assert.match(
+          el,
+          /<img class="brand-logo" src="\/assets\/bakusoku\/logo.png"[^>]*alt="バクソク内容証明"/,
+          `${area} にロゴ画像がありません`
+        );
+        assert.ok(
+          !el.includes("brand-mark") && !el.includes("brand-word"),
+          `${area} に旧ロゴが残っています`
+        );
+      }
+    }
+  });
+
+  test("サイトアイコンはアイコンのみの画像を使う", () => {
+    for (const page of [html, articleHtml]) {
+      assert.match(
+        page,
+        /<link rel="icon" href="\/assets\/bakusoku\/icon-32.png" sizes="32x32" type="image\/png"\/>/
+      );
+      assert.match(
+        page,
+        /<link rel="icon" href="\/assets\/bakusoku\/icon-192.png" sizes="192x192" type="image\/png"\/>/
+      );
+      assert.match(
+        page,
+        /<link rel="apple-touch-icon" href="\/assets\/bakusoku\/apple-touch-icon.png"\/>/
+      );
+      assert.ok(!page.includes("favicon.svg"));
+    }
+  });
+
+  test("画像は指定サイズで、ロゴとアイコンは背景が透過", () => {
+    assert.deepEqual(png("icon-32.png"), {
+      width: 32,
+      height: 32,
+      colorType: 6,
+    });
+    assert.deepEqual(png("icon-192.png"), {
+      width: 192,
+      height: 192,
+      colorType: 6,
+    });
+    assert.deepEqual(png("apple-touch-icon.png"), {
+      width: 180,
+      height: 180,
+      colorType: 2,
+    });
+    assert.deepEqual(png("logo.png"), {
+      width: 885,
+      height: 120,
+      colorType: 6,
+    });
   });
 });

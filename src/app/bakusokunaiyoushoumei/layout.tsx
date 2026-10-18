@@ -15,7 +15,21 @@ export const metadata: Metadata = {
   applicationName: product.name,
   publisher: "株式会社SamurAI DX",
   alternates: { canonical: "/bakusokunaiyoushoumei" },
-  icons: { icon: "/assets/bakusoku/favicon.svg" },
+  icons: {
+    icon: [
+      {
+        url: "/assets/bakusoku/icon-32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/assets/bakusoku/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+    ],
+    apple: "/assets/bakusoku/apple-touch-icon.png",
+  },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
