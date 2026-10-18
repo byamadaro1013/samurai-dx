@@ -63,17 +63,17 @@ export default function HomePage() {
                   {"e内容証明 入力支援アプリ「バクソク内容証明」"}
                 </span>
                 <span className="hero-catch">
-                  その入力、
+                  e内容証明を
                   <br />
-                  <span className="text-red">バクソクに。</span>
+                  <span className="text-red">爆速送付</span>
                 </span>
               </h1>
               <p className="hero-description">
-                書面に向き合う時間を、取り戻す。
-                <br />
-                e内容証明の繰り返し入力と画面遷移を、
+                使いづらく手間のかかるe内容証明の入力作業と画面遷移を、
                 <br className="desktop-break" />
-                まとめて自動化。
+                アプリが自動化。
+                <br />
+                e内容証明を、すばやく送付できます。
               </p>
               <div className="hero-actions">
                 <PurchaseButton className="button button-red">
@@ -137,7 +137,7 @@ export default function HomePage() {
                   入力開始から文書確認まで
                 </span>
                 <span className="speed-value">
-                  <small>約</small>30<span>秒</span>
+                  <small>約</small>60<span>秒</span>
                   <sup>※</sup>
                 </span>
                 <span className="speed-note-caption">
@@ -167,32 +167,31 @@ export default function HomePage() {
             </a>
           </div>
         </section>
-        <div className="audience-strip">
-          <div className="audience-inner container">
-            <p>内容証明を、日々の仕事に使う方へ。</p>
-            <div>
-              <span>弁護士</span>
-              <span>司法書士</span>
-              <span>行政書士</span>
-              <span>企業の法務部門</span>
-            </div>
-          </div>
-        </div>
         <section className="problem-section section container">
           <div className="section-heading">
             <p className="eyebrow section-eyebrow">THE EVERYDAY FRICTION</p>
             <h2>
-              考える仕事の前に、
+              e内容証明、
               <br />
-              e内容証明の入力で
-              <br />
-              疲れていませんか。
+              使いづらくないですか？
             </h2>
             <p className="section-description">
-              一つひとつは小さな作業。
+              e内容証明は、1通送るのに約7分。手間取れば30分かかることもあります。10通送れば、それだけで1時間を超えます。
               <br />
-              でも、毎回となると大きな負担に。
+              内容証明を日常的に送る実務家ほど、この入力作業の負担は大きくなります。
             </p>
+            <div className="audience-box">
+              <p className="audience-label">こんな方におすすめ</p>
+              <p className="audience-lead">
+                仕事で内容証明をくり返し送り、e内容証明の入力に時間を取られている方
+              </p>
+              <ul className="audience-tags">
+                <li>弁護士</li>
+                <li>司法書士</li>
+                <li>行政書士</li>
+                <li>企業の法務部門</li>
+              </ul>
+            </div>
           </div>
           <div className="problem-list">
             <div className="problem-row">
@@ -235,9 +234,9 @@ export default function HomePage() {
                   LESS INPUT. MORE FOCUS.
                 </p>
                 <h2>
-                  e内容証明の、いつもの手間を
+                  バクソク内容証明なら、
                   <br />
-                  ひとまとめに。
+                  たった3作業・約1分
                 </h2>
               </div>
               <p className="section-description">
@@ -451,11 +450,7 @@ export default function HomePage() {
           <div className="section-top">
             <div>
               <p className="eyebrow section-eyebrow">HOW IT WORKS</p>
-              <h2>
-                準備して、任せて、
-                <br />
-                最後は自分で確認。
-              </h2>
+              <h2>実際の作業フロー</h2>
             </div>
             <VideoButton className="video-trigger button button-outline">
               <svg className="icon">
@@ -508,27 +503,41 @@ export default function HomePage() {
             <div className="security-copy">
               <p className="eyebrow section-eyebrow">SPEED WITH CONTROL</p>
               <h2>
-                速く進めて、
+                文書確認と決済は
                 <br />
-                大事なところで止まる。
+                ご自身で
               </h2>
               <p>
-                大切な書面を扱う仕事だから。
+                アプリが自動化するのは、入力作業と画面遷移まで。
                 <br />
-                自動化する範囲と、確認する場所を明確に。
+                文書確認の画面で止まり、文書の確認と決済は利用者ご自身で行います。
               </p>
               <ul className="security-list">
                 <li>
                   <svg className="icon">
                     <use href="#i-check" />
                   </svg>
-                  <span>文書の読み込み・規定チェックはPC内で処理</span>
+                  <span>入力作業・画面遷移はアプリが自動で進める</span>
                 </li>
                 <li>
                   <svg className="icon">
                     <use href="#i-check" />
                   </svg>
-                  <span>生成AI APIを使わず、AIベンダーへ文書を送信しない</span>
+                  <span>文書確認・差出し・決済は利用者ご自身で行う</span>
+                </li>
+                <li>
+                  <svg className="icon">
+                    <use href="#i-check" />
+                  </svg>
+                  <span>生成AIは使用せず、AIベンダーへ文書を送信しない</span>
+                </li>
+                <li>
+                  <svg className="icon">
+                    <use href="#i-check" />
+                  </svg>
+                  <span>
+                    文書の読み込み・規定チェックはPC内（ローカル環境）で処理
+                  </span>
                 </li>
                 <li>
                   <svg className="icon">
@@ -537,6 +546,9 @@ export default function HomePage() {
                   <span>差出人・受取人・案件データはPC内に保存</span>
                 </li>
               </ul>
+              <p>
+                文書を外部のAIサービスなどに送らずPC内で処理するため、機密性の高い書面も安心して扱えます。
+              </p>
               <p className="security-footnote">
                 日本郵便の公式サイトへ接続します。Google
                 Drive保存機能を使う場合は、ご自身のDriveへ保存します。
