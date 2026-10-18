@@ -112,8 +112,11 @@ describe("2. ターゲット紹介・課題提起", () => {
       problem.match(/<p class="section-description">([\s\S]*?)<\/p>/)[1]
     );
     assert.ok(!desc.includes("一つひとつは小さな作業"));
+    // 数値はnote記事(販売ページ)の記載どおり。実測とは書かれていないので「実測」と付けない
     assert.match(desc, /1通送るのに約7分/);
-    assert.match(desc, /10通なら1時間を超えます/);
+    assert.match(desc, /30分かかることもあります/);
+    assert.match(desc, /10通送れば、それだけで1時間を超えます/);
+    assert.ok(!desc.includes("実測"));
     assert.match(desc, /日常的に送る実務家ほど/);
   });
 
