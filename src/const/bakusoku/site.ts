@@ -6,6 +6,8 @@ export const product = {
   termsUrl:
     "https://slow-noise-ba5.notion.site/3df42d401011808bbc90cafe002fde87",
   contactEmail: "hashimoto@samurai-dx.com",
+  // 購入フォームの内容(注文通知)を受け取る運営側のアドレス
+  orderNotifyEmail: "kai.yamada@orgai.info",
 } as const;
 
 // Stripeの環境変数が未設定なら購入APIが503を返し、モーダルにエラーを出す

@@ -12,12 +12,36 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
-export async function sendPurchaseMail(order: PaidOrder): Promise<void> {
+async function sendMail(
+  idempotencyKey: string,
+  mail: {
+    to: string[];
+    reply_to: string;
+    subject: string;
+    text: string;
+    html?: string;
+  }
+): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.BAKUSOKU_MAIL_FROM;
   if (!apiKey || !from)
     throw new Error("RESEND_API_KEY / BAKUSOKU_MAIL_FROM is not set");
 
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      // Webhookの再送で同じメールが二重に届かないようにする(Resend側で24時間有効)
+      "Idempotency-Key": idempotencyKey,
+    },
+    body: JSON.stringify({ from, ...mail }),
+  });
+  if (!response.ok)
+    throw new Error(`Resend responded with status ${response.status}`);
+}
+
+export async function sendPurchaseMail(order: PaidOrder): Promise<void> {
   const links = (Object.keys(platforms) as (keyof typeof platforms)[]).map(
     (platform) => ({
       label: platforms[platform].label,
@@ -50,23 +74,30 @@ ${links
 <p>株式会社SamurAI DX</p>
 </div>`;
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-      // Webhookの再送で同じメールが二重に届かないようにする(Resend側で24時間有効)
-      "Idempotency-Key": `bakusoku-purchase/${order.sessionId}`,
-    },
-    body: JSON.stringify({
-      from,
-      to: [order.email],
-      reply_to: product.contactEmail,
-      subject: `【${product.name}】ダウンロードのご案内`,
-      text,
-      html,
-    }),
+  await sendMail(`bakusoku-purchase/${order.sessionId}`, {
+    to: [order.email],
+    reply_to: product.contactEmail,
+    subject: `【${product.name}】ダウンロードのご案内`,
+    text,
+    html,
   });
-  if (!response.ok)
-    throw new Error(`Resend responded with status ${response.status}`);
+}
+
+/** 運営側への注文通知。購入フォームに入力された内容を orderNotifyEmail に送る */
+export async function sendOrderNotification(order: PaidOrder): Promise<void> {
+  const text = [
+    `${product.name}の購入がありました。`,
+    "",
+    `事務所名: ${order.officeName}`,
+    `お名前: ${order.customerName}`,
+    `メールアドレス: ${order.email}`,
+    `金額: ${product.priceJpy.toLocaleString("ja-JP")}円(税込)`,
+    `Stripe決済ID: ${order.sessionId}`,
+  ].join("\n");
+  await sendMail(`bakusoku-order-notify/${order.sessionId}`, {
+    to: [product.orderNotifyEmail],
+    reply_to: order.email,
+    subject: `【${product.name}】購入通知: ${order.officeName}`,
+    text,
+  });
 }
