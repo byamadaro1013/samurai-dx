@@ -1,11 +1,13 @@
 import { SITE_URL } from "@/const";
 export const product = {
   name: "バクソク内容証明",
-  priceJpy: 9800,
+  priceJpy: 11800,
   currency: "JPY",
   termsUrl:
     "https://slow-noise-ba5.notion.site/3df42d401011808bbc90cafe002fde87",
   contactEmail: "hashimoto@samurai-dx.com",
+  // 購入フォームの内容(注文通知)を受け取る運営側のアドレス
+  orderNotifyEmail: "kai.yamada@orgai.info",
 } as const;
 
 // Stripeの環境変数が未設定なら購入APIが503を返し、モーダルにエラーを出す

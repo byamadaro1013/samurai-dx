@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
   title: "バクソク内容証明 | e内容証明の入力を自動化・士業の業務効率化",
   description:
-    "e内容証明の繰り返し入力と画面遷移を自動化する入力支援アプリ。差出人・宛先管理、Word文書の規定チェックに対応。Windows・macOSで、弁護士・司法書士・行政書士の業務を効率化します。",
+    "e内容証明を、バクソクで。全角・半角エラーや書式エラー、使いづらい入力画面、遅い画面遷移を解決する入力支援アプリ。入力・確認・決済の3操作、1通約2分。Windows・macOS対応、同一事務所内は台数無制限。",
   keywords: [...searchKeywords],
   applicationName: product.name,
   publisher: "株式会社SamurAI DX",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: "/bakusokunaiyoushoumei",
     siteName: product.name,
-    title: "バクソク内容証明 | その入力、バクソクに。",
+    title: "バクソク内容証明 | e内容証明を、バクソクで。",
     description:
-      "書面に向き合う時間を、取り戻す。e内容証明の入力支援アプリ。Windows・macOS対応。",
+      "たった3操作、1通約2分。e内容証明の入力支援アプリ。Windows・macOS対応。",
     images: [
       {
         url: "/assets/bakusoku/app-screen.png",

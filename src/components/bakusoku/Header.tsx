@@ -6,9 +6,9 @@ import { Icon } from "./Icon";
 import { PurchaseButton } from "./PurchaseProvider";
 
 const links = [
-  ["/bakusokunaiyoushoumei#features", "できること"],
-  ["/bakusokunaiyoushoumei#demo", "デモ動画"],
   ["/bakusokunaiyoushoumei#how-it-works", "使い方"],
+  ["/bakusokunaiyoushoumei#demo", "デモ動画"],
+  ["/bakusokunaiyoushoumei#features", "機能"],
   ["/bakusokunaiyoushoumei#pricing", "料金"],
   ["/bakusokunaiyoushoumei#faq", "よくある質問"],
   ["/bakusokunaiyoushoumei/articles", "記事"],
