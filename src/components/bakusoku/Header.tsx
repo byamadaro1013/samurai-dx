@@ -11,7 +11,7 @@ const links = [
   ["/bakusokunaiyoushoumei#how-it-works", "使い方"],
   ["/bakusokunaiyoushoumei#pricing", "料金"],
   ["/bakusokunaiyoushoumei#faq", "よくある質問"],
-  ["/bakusokunaiyoushoumei/articles", "記事"],
+  ["/bakusokunaiyoushoumei/articles", "記事一覧"],
 ] as const;
 
 export function Header() {
@@ -39,14 +39,13 @@ export function Header() {
           href="/bakusokunaiyoushoumei"
           aria-label="バクソク内容証明 トップ"
         >
-          <span className="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32">
-              <path d="M13 7h11v18H13M13 12h7M13 17h7M5 12h5M3 17h7M6 22h4" />
-            </svg>
-          </span>
-          <span className="brand-word">
-            バクソク内容証明<small>BAKUSOKU NAIYO SHOMEI</small>
-          </span>
+          <img
+            className="brand-logo"
+            src="/assets/bakusoku/logo.png"
+            width="885"
+            height="120"
+            alt="バクソク内容証明"
+          />
         </Link>
         <nav className="desktop-nav" aria-label="メインナビゲーション">
           {links.map(([href, label]) => (

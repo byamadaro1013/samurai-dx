@@ -15,16 +15,30 @@ export const metadata: Metadata = {
   applicationName: product.name,
   publisher: "株式会社SamurAI DX",
   alternates: { canonical: "/bakusokunaiyoushoumei" },
-  icons: { icon: "/assets/bakusoku/favicon.svg" },
+  icons: {
+    icon: [
+      {
+        url: "/assets/bakusoku/icon-32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/assets/bakusoku/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+    ],
+    apple: "/assets/bakusoku/apple-touch-icon.png",
+  },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     locale: "ja_JP",
     url: "/bakusokunaiyoushoumei",
     siteName: product.name,
-    title: "バクソク内容証明 | その入力、バクソクに。",
+    title: "バクソク内容証明 | e内容証明を爆速送付",
     description:
-      "書面に向き合う時間を、取り戻す。e内容証明の入力支援アプリ。Windows・macOS対応。",
+      "e内容証明の入力作業と画面遷移を自動化する入力支援アプリ。Windows・macOS対応。",
     images: [
       {
         url: "/assets/bakusoku/app-screen.png",
