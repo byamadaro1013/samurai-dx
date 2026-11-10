@@ -1,7 +1,7 @@
 import { SITE_URL } from "@/const";
 export const product = {
   name: "バクソク内容証明",
-  priceJpy: 9800,
+  priceJpy: 11800,
   currency: "JPY",
   termsUrl:
     "https://slow-noise-ba5.notion.site/3df42d401011808bbc90cafe002fde87",
