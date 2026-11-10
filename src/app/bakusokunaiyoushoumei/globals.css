@@ -247,6 +247,7 @@ h3 {
 .desktop-nav a {
   position: relative;
   padding: 8px 0;
+  white-space: nowrap;
 }
 .desktop-nav a::after {
   content: "";
@@ -1489,9 +1490,6 @@ h3 {
     gap: 15px;
     font-size: 11px;
   }
-  .desktop-nav > a:last-child {
-    display: none;
-  }
   .button-small {
     padding: 11px 13px;
     gap: 8px;
@@ -1724,6 +1722,14 @@ h3 {
   }
   .footer-bottom {
     font-size: 8px;
+  }
+}
+@media (min-width: 761px) and (max-width: 860px) {
+  .header-inner {
+    gap: 14px;
+  }
+  .desktop-nav {
+    gap: 11px;
   }
 }
 @media (max-width: 760px) {

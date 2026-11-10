@@ -305,3 +305,47 @@ describe("ロゴとサイトアイコン", () => {
     });
   });
 });
+
+describe("記事一覧への導線", () => {
+  const articleHtml = readFileSync(
+    join(appDir, "bakusokunaiyoushoumei", "error.html"),
+    "utf8"
+  );
+  const area = (page, re) => page.match(re)[0];
+  const listLink = /<a href="\/bakusokunaiyoushoumei\/articles">記事一覧<\/a>/;
+
+  test("ヘッダー(PCナビとスマホのメニュー)に記事一覧がある", () => {
+    for (const page of [html, articleHtml]) {
+      assert.match(
+        area(page, /<nav class="desktop-nav"[\s\S]*?<\/nav>/),
+        listLink
+      );
+      assert.match(
+        area(page, /<nav class="mobile-nav"[\s\S]*?<\/nav>/),
+        listLink
+      );
+    }
+  });
+
+  test("フッターに記事一覧がある", () => {
+    for (const page of [html, articleHtml]) {
+      assert.match(
+        area(page, /<div class="footer-links">[\s\S]*?<\/div>/),
+        listLink
+      );
+    }
+  });
+
+  test("記事一覧ページがビルドされ、記事へのリンクが並んでいる", () => {
+    const list = readFileSync(
+      join(appDir, "bakusokunaiyoushoumei", "articles.html"),
+      "utf8"
+    );
+    const links =
+      list.match(/href="\/bakusokunaiyoushoumei\/(?:error|moji)[^"]*"/g) ?? [];
+    assert.ok(
+      new Set(links).size >= 12,
+      `記事リンクが${new Set(links).size}件しかありません`
+    );
+  });
+});

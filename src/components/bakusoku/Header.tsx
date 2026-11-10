@@ -11,7 +11,7 @@ const links = [
   ["/bakusokunaiyoushoumei#how-it-works", "使い方"],
   ["/bakusokunaiyoushoumei#pricing", "料金"],
   ["/bakusokunaiyoushoumei#faq", "よくある質問"],
-  ["/bakusokunaiyoushoumei/articles", "記事"],
+  ["/bakusokunaiyoushoumei/articles", "記事一覧"],
 ] as const;
 
 export function Header() {

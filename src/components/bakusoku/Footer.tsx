@@ -18,6 +18,7 @@ export function Footer() {
             />
           </Link>
           <div className="footer-links">
+            <Link href="/bakusokunaiyoushoumei/articles">記事一覧</Link>
             <a
               href="https://www.samuraidx.co.jp/"
               target="_blank"
