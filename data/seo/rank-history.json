@@ -1,0 +1,58 @@
+{
+  "entries": [
+    {
+      "date": "2026-10-16",
+      "source": "websearch",
+      "keyword": "バクソク内容証明",
+      "targetPath": "/bakusokunaiyoushoumei",
+      "page": null,
+      "rank": null,
+      "note": "WebSearch上位9件に自サイトなし。site:検索でもページ未検出(PR #22未マージで未公開)"
+    },
+    {
+      "date": "2026-10-16",
+      "source": "websearch",
+      "keyword": "e内容証明 自動入力",
+      "targetPath": "/bakusokunaiyoushoumei",
+      "page": null,
+      "rank": null,
+      "note": "WebSearch上位9件に自サイトなし。site:検索でもページ未検出(PR #22未マージで未公開)"
+    },
+    {
+      "date": "2026-10-16",
+      "source": "websearch",
+      "keyword": "e内容証明 エラー",
+      "targetPath": "/bakusokunaiyoushoumei/error",
+      "page": null,
+      "rank": null,
+      "note": "WebSearch上位9件に自サイトなし。site:検索でもページ未検出(PR #22未マージで未公開)"
+    },
+    {
+      "date": "2026-10-16",
+      "source": "websearch",
+      "keyword": "e内容証明 アップロードできない",
+      "targetPath": "/bakusokunaiyoushoumei/error/upload",
+      "page": null,
+      "rank": null,
+      "note": "WebSearch上位9件に自サイトなし。site:検索でもページ未検出(PR #22未マージで未公開)"
+    },
+    {
+      "date": "2026-10-16",
+      "source": "websearch",
+      "keyword": "e内容証明 使用できない文字",
+      "targetPath": "/bakusokunaiyoushoumei/error/moji",
+      "page": null,
+      "rank": null,
+      "note": "WebSearch上位9件に自サイトなし。site:検索でもページ未検出(PR #22未マージで未公開)"
+    },
+    {
+      "date": "2026-10-16",
+      "source": "websearch",
+      "keyword": "内容証明 使えない文字",
+      "targetPath": "/bakusokunaiyoushoumei/moji",
+      "page": null,
+      "rank": null,
+      "note": "WebSearch上位9件に自サイトなし。site:検索でもページ未検出(PR #22未マージで未公開)"
+    }
+  ]
+}
