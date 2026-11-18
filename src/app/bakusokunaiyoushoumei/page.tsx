@@ -80,18 +80,32 @@ const faqs: ReadonlyArray<readonly [string, string]> = [
   ],
 ];
 
+// FAQPage の内容は画面のFAQと同じ配列から作る(本文と一致させるため)
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(([question, answer]) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: { "@type": "Answer", text: answer },
+  })),
+};
+
 const errorHubHref = `${articlesBasePath}/error`;
+// 送り方の比較はエラー解説ではないので、トラブル解決の一覧には出さない
+const nonGuideHrefs = [errorHubHref, `${articlesBasePath}/okurikata`];
 
 export default function HomePage() {
   const articles = getArticles();
   const errorHub = articles.find((article) => article.href === errorHubHref);
   // エラー一覧以外の記事(エラー別の解説と、使えない文字の一覧)
   const errorGuides = articles.filter(
-    (article) => article.href !== errorHubHref
+    (article) => !nonGuideHrefs.includes(article.href)
   );
   return (
     <MediaProvider>
       <JsonLd data={softwareJsonLd} />
+      <JsonLd data={faqJsonLd} />
       <a className="skip-link" href="#main">
         本文へスキップ
       </a>

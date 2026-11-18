@@ -1,9 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { IconDefs } from "@/components/bakusoku/IconDefs";
+import { JsonLd } from "@/components/bakusoku/JsonLd";
 import { MetaPixel } from "@/components/bakusoku/MetaPixel";
 import { PurchaseProvider } from "@/components/bakusoku/PurchaseProvider";
-import { getSiteUrl, product, searchKeywords } from "@/const/bakusoku/site";
+import {
+  getSiteUrl,
+  organizationJsonLd,
+  product,
+  searchKeywords,
+} from "@/const/bakusoku/site";
 import "./globals.css";
 import "./purchase.css";
 
@@ -62,6 +68,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <body>
+        <JsonLd data={organizationJsonLd()} />
         <IconDefs />
         <MetaPixel />
         <PurchaseProvider>{children}</PurchaseProvider>

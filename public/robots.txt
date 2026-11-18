@@ -2,6 +2,34 @@
 User-agent: *
 Allow: /
 
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
+# OAI-SearchBot
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT-User
+User-agent: ChatGPT-User
+Allow: /
+
+# PerplexityBot
+User-agent: PerplexityBot
+Allow: /
+
+# Claude-SearchBot
+User-agent: Claude-SearchBot
+Allow: /
+
+# Claude-User
+User-agent: Claude-User
+Allow: /
+
 # Host
 Host: https://www.samuraidx.co.jp
 
