@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://samurai-dx.example.com
+Host: https://www.samuraidx.co.jp
 
 # Sitemaps
-Sitemap: https://samurai-dx.example.com/sitemap.xml
+Sitemap: https://www.samuraidx.co.jp/sitemap.xml

@@ -1,0 +1,219 @@
+.purchase-dialog {
+  max-width: 590px;
+}
+.purchase-content {
+  padding: 25px 27px 30px;
+}
+.purchase-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.purchase-product-name {
+  font-size: 15px;
+  font-weight: 700;
+}
+.purchase-product p {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-top: 5px;
+}
+.purchase-total {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  white-space: nowrap;
+  line-height: 1.4;
+  letter-spacing: -0.035em;
+}
+.purchase-total small {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  text-align: right;
+  letter-spacing: 0;
+}
+.purchase-notice {
+  font-size: 12px;
+  background: #eee9dc;
+  border: 1px solid #d4ccba;
+  color: #5f5135;
+  padding: 12px 14px;
+  margin: 20px 0;
+  border-radius: 6px;
+  line-height: 1.9;
+}
+.purchase-form {
+  display: grid;
+  gap: 21px;
+  margin-top: 23px;
+}
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+.form-field label {
+  font-size: 13px;
+  font-weight: 700;
+}
+.form-field label > span {
+  font-size: 9px;
+  color: var(--red-dark);
+  background: #f5e7de;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-left: 6px;
+}
+.form-field input {
+  width: 100%;
+  padding: 12px 13px;
+  background: #fff;
+  border: 1px solid #b6c0b7;
+  border-radius: 5px;
+  color: var(--ink);
+  font-size: 15px;
+  min-height: 48px;
+}
+.form-field input[aria-invalid="true"] {
+  border-color: #b2291b;
+}
+.form-field input::placeholder {
+  color: #7b857f;
+  font-size: 13px;
+}
+.field-hint,
+.purchase-privacy {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+.field-error {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #a8281b;
+}
+.terms-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1.9;
+  cursor: pointer;
+}
+.terms-check input {
+  margin-top: 5px;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--red);
+  flex-shrink: 0;
+}
+.terms-check a {
+  color: var(--red-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.purchase-review {
+  margin-top: 22px;
+}
+.purchase-review dl {
+  margin: 0 0 22px;
+}
+.purchase-review dl > div {
+  display: grid;
+  grid-template-columns: 115px 1fr;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.purchase-review dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+.purchase-review dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.purchase-review dd > small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+  margin-top: 3px;
+}
+.purchase-review-note {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.95;
+  margin-bottom: 22px;
+}
+.purchase-dialog .button:disabled {
+  background: #69736d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.purchase-back {
+  display: block;
+  margin: 17px auto 0;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 8px;
+  color: #53645a;
+}
+.purchase-review > .field-error {
+  margin-bottom: 17px;
+}
+.purchase-nav-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 4px;
+}
+@media (max-width: 760px) {
+  .purchase-content {
+    padding: 21px 19px 24px;
+  }
+  .purchase-dialog .dialog-head h2 {
+    font-size: 13px;
+  }
+  .purchase-total {
+    font-size: 27px;
+  }
+  .purchase-product-name {
+    font-size: 13px;
+  }
+  .purchase-product {
+    gap: 13px;
+  }
+  .purchase-product p {
+    font-size: 10px;
+  }
+  .purchase-review dl > div {
+    grid-template-columns: 92px 1fr;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .purchase-dialog .button {
+    font-size: 13px;
+  }
+  .form-field input {
+    font-size: 16px;
+  }
+  .purchase-dialog {
+    max-height: calc(100dvh - 26px);
+  }
+}
