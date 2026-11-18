@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import type Stripe from "stripe";
-import { sendPurchaseMail } from "@/lib/bakusoku/mail";
+import { sendOrderNotification, sendPurchaseMail } from "@/lib/bakusoku/mail";
 import { getPaidOrder, getStripe } from "@/lib/bakusoku/stripe";
 
 export const runtime = "nodejs";
@@ -12,7 +12,7 @@ const PAID_EVENTS = new Set<Stripe.Event["type"]>([
 ]);
 
 /**
- * Stripe Webhook。署名を検証し、支払い完了ならダウンロードリンクをメールで送る。
+ * Stripe Webhook。署名を検証し、支払い完了ならダウンロードリンクを購入者に、注文通知を運営側にメールで送る。
  * メール送信に失敗したら500を返し、Stripeの自動再送に任せる。
  */
 export async function POST(request: NextRequest) {
@@ -47,6 +47,7 @@ export async function POST(request: NextRequest) {
 
   try {
     await sendPurchaseMail(order);
+    await sendOrderNotification(order);
   } catch (cause) {
     console.error("[bakusoku] purchase mail failed", session.id, cause);
     return NextResponse.json({ error: "mail failed" }, { status: 500 });
