@@ -1,0 +1,23 @@
+{
+  "siteUrl": "https://www.samuraidx.co.jp",
+  "gscProperty": "https://www.samuraidx.co.jp/",
+  "pathPrefix": "/bakusokunaiyoushoumei",
+  "keywords": [
+    { "keyword": "バクソク内容証明", "targetPath": "/bakusokunaiyoushoumei", "priority": "high" },
+    { "keyword": "e内容証明 自動入力", "targetPath": "/bakusokunaiyoushoumei", "priority": "high" },
+    { "keyword": "e内容証明 入力支援", "targetPath": "/bakusokunaiyoushoumei", "priority": "medium" },
+    { "keyword": "e内容証明 自動化", "targetPath": "/bakusokunaiyoushoumei", "priority": "medium" },
+    { "keyword": "e内容証明 エラー", "targetPath": "/bakusokunaiyoushoumei/error", "priority": "high" },
+    { "keyword": "e内容証明 アップロードできない", "targetPath": "/bakusokunaiyoushoumei/error/upload", "priority": "high" },
+    { "keyword": "e内容証明 使用できない文字", "targetPath": "/bakusokunaiyoushoumei/error/moji", "priority": "high" },
+    { "keyword": "内容証明 使えない文字", "targetPath": "/bakusokunaiyoushoumei/moji", "priority": "high" },
+    { "keyword": "e内容証明 余白 エラー", "targetPath": "/bakusokunaiyoushoumei/error/yohaku", "priority": "medium" },
+    { "keyword": "文字以外の図形等の情報があります", "targetPath": "/bakusokunaiyoushoumei/error/zukei", "priority": "medium" },
+    { "keyword": "文字の重なりを検出しました", "targetPath": "/bakusokunaiyoushoumei/error/kasanari", "priority": "medium" },
+    { "keyword": "白紙のページがあります", "targetPath": "/bakusokunaiyoushoumei/error/hakushi", "priority": "medium" },
+    { "keyword": "e内容証明 ページ数オーバー", "targetPath": "/bakusokunaiyoushoumei/error/page", "priority": "medium" },
+    { "keyword": "e内容証明 テンプレート", "targetPath": "/bakusokunaiyoushoumei/error/hinagata", "priority": "medium" },
+    { "keyword": "イメージファイルの作成ができませんでした", "targetPath": "/bakusokunaiyoushoumei/error/image", "priority": "medium" },
+    { "keyword": "e内容証明 ログインできない", "targetPath": "/bakusokunaiyoushoumei/error/login", "priority": "medium" }
+  ]
+}
