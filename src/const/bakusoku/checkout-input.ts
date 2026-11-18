@@ -15,6 +15,19 @@ export const checkoutInputSchema = z
         (value) => !/[\u0000-\u001f\u007f]/.test(value),
         "事務所名に使用できない文字が含まれています。"
       ),
+    customerName: z
+      .string()
+      .transform((value) => value.trim().normalize("NFC"))
+      .pipe(
+        z
+          .string()
+          .min(1, "氏名を入力してください。")
+          .max(100, "氏名は100文字以内で入力してください。")
+      )
+      .refine(
+        (value) => !/[\u0000-\u001f\u007f]/.test(value),
+        "氏名に使用できない文字が含まれています。"
+      ),
     email: z
       .string()
       .trim()

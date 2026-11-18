@@ -217,3 +217,57 @@
     max-height: calc(100dvh - 26px);
   }
 }
+.thanks-shell {
+  padding: 72px 0 96px;
+}
+.thanks-card {
+  max-width: 640px;
+  padding: 40px 36px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--red);
+  border-radius: 10px;
+  display: grid;
+  gap: 18px;
+  font-size: 14px;
+  line-height: 1.95;
+}
+.thanks-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red-dark);
+}
+.thanks-card h1 {
+  font-size: 26px;
+  line-height: 1.5;
+}
+.thanks-downloads {
+  display: grid;
+  gap: 12px;
+  margin: 8px 0;
+}
+.thanks-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+.thanks-note a,
+.thanks-back {
+  color: var(--red-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.thanks-back {
+  justify-self: center;
+  font-size: 12px;
+}
+@media (max-width: 760px) {
+  .thanks-shell {
+    padding: 40px 0 64px;
+  }
+  .thanks-card {
+    padding: 28px 20px;
+  }
+  .thanks-card h1 {
+    font-size: 21px;
+  }
+}

@@ -1,0 +1,72 @@
+import { product } from "@/const/bakusoku/site";
+import { getDownloadLink, platforms, type PaidOrder } from "./stripe";
+
+// サーバー専用。Resend の REST API で購入案内メールを送る。
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+export async function sendPurchaseMail(order: PaidOrder): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.BAKUSOKU_MAIL_FROM;
+  if (!apiKey || !from)
+    throw new Error("RESEND_API_KEY / BAKUSOKU_MAIL_FROM is not set");
+
+  const links = (Object.keys(platforms) as (keyof typeof platforms)[]).map(
+    (platform) => ({
+      label: platforms[platform].label,
+      href: getDownloadLink(platform, order.sessionId),
+    })
+  );
+  const greeting = `${order.officeName}\n${order.customerName} 様`;
+  const text = [
+    greeting,
+    "",
+    `このたびは${product.name}をご購入いただき、ありがとうございます。`,
+    "決済が完了しましたので、以下のリンクからアプリをダウンロードしてください。",
+    "",
+    ...links.map(({ label, href }) => `■ ${label}\n${href}\n`),
+    "このリンクはご購入者さま専用です。第三者へ共有しないでください。",
+    `ご不明な点は ${product.contactEmail} までご連絡ください。`,
+    "",
+    "株式会社SamurAI DX",
+  ].join("\n");
+  const html = `<div style="font-family:sans-serif;line-height:1.8;color:#1d2420">
+<p>${escapeHtml(order.officeName)}<br>${escapeHtml(order.customerName)} 様</p>
+<p>このたびは${escapeHtml(product.name)}をご購入いただき、ありがとうございます。<br>決済が完了しましたので、以下のリンクからアプリをダウンロードしてください。</p>
+${links
+  .map(
+    ({ label, href }) =>
+      `<p><a href="${escapeHtml(href)}" style="display:inline-block;padding:10px 18px;background:#b2291b;color:#fff;text-decoration:none;border-radius:6px">${escapeHtml(label)}をダウンロード</a></p>`
+  )
+  .join("\n")}
+<p style="font-size:12px;color:#5b665f">このリンクはご購入者さま専用です。第三者へ共有しないでください。<br>ご不明な点は ${escapeHtml(product.contactEmail)} までご連絡ください。</p>
+<p>株式会社SamurAI DX</p>
+</div>`;
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      // Webhookの再送で同じメールが二重に届かないようにする(Resend側で24時間有効)
+      "Idempotency-Key": `bakusoku-purchase/${order.sessionId}`,
+    },
+    body: JSON.stringify({
+      from,
+      to: [order.email],
+      reply_to: product.contactEmail,
+      subject: `【${product.name}】ダウンロードのご案内`,
+      text,
+      html,
+    }),
+  });
+  if (!response.ok)
+    throw new Error(`Resend responded with status ${response.status}`);
+}

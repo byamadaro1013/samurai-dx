@@ -21,6 +21,7 @@ import {
 } from "@/const/bakusoku/site";
 import { Icon } from "./Icon";
 
+const PURCHASE_HASH = "#purchase";
 const PurchaseContext = createContext<(() => void) | null>(null);
 type FieldErrors = Partial<Record<keyof CheckoutInput, string>>;
 
@@ -35,6 +36,7 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [stage, setStage] = useState<"input" | "review">("input");
   const [officeName, setOfficeName] = useState("");
+  const [customerName, setCustomerName] = useState("");
   const [email, setEmail] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
@@ -43,6 +45,7 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
   const [busy, setBusy] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const officeInput = useRef<HTMLInputElement>(null);
+  const nameInput = useRef<HTMLInputElement>(null);
   const emailInput = useRef<HTMLInputElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const requestId = useRef<string | null>(null);
@@ -59,10 +62,33 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
     if (open && stage === "review") heading.current?.focus();
   }, [open, stage]);
 
+  // 記事本文の「#purchase」リンク(例: バクソクで5分で送る)でもモーダルを開く。
+  // JSが無い環境ではLPへ遷移し、LP側でハッシュを見て開く。
+  useEffect(() => {
+    if (window.location.hash === PURCHASE_HASH) {
+      history.replaceState(null, "", location.pathname + location.search);
+      setOpen(true);
+    }
+    function onClick(event: MouseEvent) {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+        return;
+      const link = (event.target as Element | null)?.closest?.("a[href]");
+      if (!(link instanceof HTMLAnchorElement)) return;
+      if (link.hash !== PURCHASE_HASH || link.origin !== location.origin)
+        return;
+      event.preventDefault();
+      setOpen(true);
+    }
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   function resetAndClose() {
     setOpen(false);
     setStage("input");
     setOfficeName("");
+    setCustomerName("");
     setEmail("");
     setAcceptedTerms(false);
     setErrors({});
@@ -77,6 +103,7 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
     event.preventDefault();
     const result = checkoutInputSchema.safeParse({
       officeName,
+      customerName,
       email,
       acceptedTerms,
     });
@@ -88,6 +115,7 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
       }
       setErrors(next);
       if (next.officeName) officeInput.current?.focus();
+      else if (next.customerName) nameInput.current?.focus();
       else if (next.email) emailInput.current?.focus();
       return;
     }
@@ -98,7 +126,6 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
   }
 
   async function startCheckout() {
-    // The UI and API both fail closed until the separately specified backend exists.
     if (!CHECKOUT_IMPLEMENTED || !draft || busy) return;
     setBusy(true);
     setMessage("");
@@ -210,6 +237,31 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
                 )}
               </div>
               <div className="form-field">
+                <label htmlFor="customer-name">
+                  氏名 <span>必須</span>
+                </label>
+                <input
+                  ref={nameInput}
+                  id="customer-name"
+                  name="customerName"
+                  autoComplete="name"
+                  required
+                  maxLength={100}
+                  value={customerName}
+                  onChange={(event) => setCustomerName(event.target.value)}
+                  aria-invalid={Boolean(errors.customerName)}
+                  aria-describedby={
+                    errors.customerName ? "name-error" : undefined
+                  }
+                  placeholder="例：山田 太郎"
+                />
+                {errors.customerName && (
+                  <p id="name-error" className="field-error" role="alert">
+                    {errors.customerName}
+                  </p>
+                )}
+              </div>
+              <div className="form-field">
                 <label htmlFor="purchase-email">
                   メールアドレス <span>必須</span>
                 </label>
@@ -229,7 +281,7 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
                   placeholder="office@example.com"
                 />
                 <p id="email-hint" className="field-hint">
-                  購入後のご案内を受け取るアドレスを入力してください。
+                  決済完了後、このアドレスにダウンロードリンクをお送りします。
                 </p>
                 {errors.email && (
                   <p id="email-error" className="field-error" role="alert">
@@ -280,6 +332,10 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
                     <dd>{draft.officeName}</dd>
                   </div>
                   <div>
+                    <dt>氏名</dt>
+                    <dd>{draft.customerName}</dd>
+                  </div>
+                  <div>
                     <dt>メールアドレス</dt>
                     <dd>{draft.email}</dd>
                   </div>
@@ -300,7 +356,7 @@ export function PurchaseProvider({ children }: { children: ReactNode }) {
                   </div>
                 </dl>
                 <p className="purchase-review-note">
-                  決済完了後、購入者専用ページからアプリを取得する流れです。購入条件・返品等の取り扱いは利用規約をご確認ください。
+                  決済完了後、完了画面とメールでWindows版・Mac版のダウンロードリンクをお届けします。購入条件・返品等の取り扱いは利用規約をご確認ください。
                 </p>
                 {message && (
                   <p className="field-error" role="alert">

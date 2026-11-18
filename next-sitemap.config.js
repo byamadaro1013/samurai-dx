@@ -2,4 +2,5 @@
 module.exports = {
   siteUrl: process.env.SITE_URL || "https://www.samuraidx.co.jp",
   generateRobotsTxt: true,
+  exclude: ["/bakusokunaiyoushoumei/thanks"],
 };
